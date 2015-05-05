@@ -1,0 +1,284 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     10073,        275]
+NotebookOptionsPosition[      9295,        245]
+NotebookOutlinePosition[      9794,        264]
+CellTagsIndexPosition[      9751,        261]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Random Walk", "Title",
+ CellChangeTimes->{{3.5982034426223955`*^9, 3.598203444242719*^9}},
+ TextAlignment->Center,
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ "This laboratory will introduce you to a 1-D Random walk simulation. \n\
+Statistics tells us that the number of times an event i occurs, ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["N", "i"], TraditionalForm]]],
+ ", out of the total number of events, N, approaches the probability  of i as \
+the number of events goes to inifinity:\n\nP(i) =  ",
+ Cell[BoxData[
+  FormBox[
+   UnderscriptBox["Lim", 
+    RowBox[{"N", " ", "\[Rule]", " ", "\[Infinity]"}]], TraditionalForm]]],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    FractionBox[
+     SubscriptBox["N", "i"], "N"]}], TraditionalForm]]],
+ "\n\nHowever when N is small, say 3 events, the outcome is less predictable \
+by probability."
+}], "Text",
+ CellChangeTimes->{{3.587819843092055*^9, 3.5878198435451*^9}, {
+  3.5982034626483994`*^9, 3.5982034857330155`*^9}, {3.598203518354539*^9, 
+  3.5982035752373204`*^9}, {3.598203643121108*^9, 3.598203704815277*^9}, {
+  3.598203753522147*^9, 3.598203753817177*^9}, {3.598203879072701*^9, 
+  3.598203903020096*^9}, {3.5982039340451975`*^9, 3.5982040277925715`*^9}, {
+  3.598204320047538*^9, 3.598204408640538*^9}, {3.598204903106538*^9, 
+  3.598204979057538*^9}, {3.598205009898538*^9, 3.598205090297538*^9}, {
+  3.5982051321265383`*^9, 3.598205133030538*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["      Random Walk",
+ FontFamily->"Times New Roman"]], "Section",
+ CellChangeTimes->{{3.587822184942566*^9, 3.587822216647566*^9}, {
+  3.5878222604555655`*^9, 3.5878222919525657`*^9}, {3.5878223525655656`*^9, 
+  3.5878223639065657`*^9}, {3.598205137713538*^9, 3.5982051487185383`*^9}}],
+
+Cell["\<\
+A 1D random walk occurs when a particle has a 50% probability of stepping \
+right and and 50% probability of stepping left.  Once it has taken its step \
+the particle once again has a P(right) = 0.5 and P(left) = 0.5 and so on.  
+
+The code below outputs the list of the postions of a particle at each step of \
+a 50 step random walk.  \
+\>", "Text",
+ CellChangeTimes->{{3.587822374444566*^9, 3.5878224090105658`*^9}, {
+  3.5878225340355654`*^9, 3.5878225653675656`*^9}, {3.5982051512965384`*^9, 
+  3.598205179525538*^9}, {3.6276690356022015`*^9, 3.627669036267268*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"function", " ", "returns", " ", "either"}], " ", "+", " ", 
+    RowBox[{"delx", " ", "or"}], " ", "-", " ", "delx"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"s", "=", " ", 
+     RowBox[{"delx", "*", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"2", "*", " ", 
+         RowBox[{"Random", "[", 
+          RowBox[{"Integer", ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "1"}], "}"}]}], "]"}]}], " ", "-", "1"}], 
+       ")"}]}]}], ";"}], "\n", 
+   RowBox[{"(*", " ", 
+    RowBox[{"One", " ", "dimensional", " ", "Random", " ", "Walk"}], " ", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"delx", " ", "=", " ", "1"}], ";"}], " ", 
+   RowBox[{"(*", 
+    RowBox[{
+    "size", " ", "of", " ", "each", " ", "step", " ", "in", " ", "m"}], " ", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nsteps", " ", "=", " ", "50"}], ";"}], " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{"number", " ", "of", " ", "steps"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"x", " ", "=", " ", "0"}], ";"}], " ", 
+   RowBox[{"(*", 
+    RowBox[{"initial", " ", "position", " ", "of", " ", "particle"}], " ", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"s", "=", " ", 
+     RowBox[{"delx", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"2", "*", " ", 
+         RowBox[{"RandomInteger", "[", "]"}]}], " ", "-", "1"}], ")"}]}]}], 
+    ";"}], " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{"initial", " ", "value", " ", "of", " ", "s"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"position", "=", 
+     RowBox[{"List", "[", "x", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", " ", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"xplus", "=", 
+        RowBox[{"x", "+", "s"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"s", "=", " ", 
+        RowBox[{"delx", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", "*", " ", 
+            RowBox[{"RandomInteger", "[", "]"}]}], " ", "-", "1"}], ")"}]}]}],
+        ";", "\[IndentingNewLine]", 
+       RowBox[{"x", "=", "xplus"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"position", "=", 
+        RowBox[{"Append", "[", 
+         RowBox[{"position", ",", "xplus"}], "]"}]}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", " ", "0", ",", "nsteps"}], "}"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "position"}]}]], "Input",
+ CellChangeTimes->{3.598205215294538*^9, 3.627669162143855*^9, 
+  3.6276692303436737`*^9, 3.6276696261062465`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", 
+   RowBox[{"-", "1"}], ",", "0", ",", "1", ",", "0", ",", "1", ",", "0", ",", 
+   
+   RowBox[{"-", "1"}], ",", "0", ",", "1", ",", "0", ",", 
+   RowBox[{"-", "1"}], ",", 
+   RowBox[{"-", "2"}], ",", 
+   RowBox[{"-", "1"}], ",", "0", ",", "1", ",", "0", ",", "1", ",", "0", ",", 
+   
+   RowBox[{"-", "1"}], ",", 
+   RowBox[{"-", "2"}], ",", 
+   RowBox[{"-", "3"}], ",", 
+   RowBox[{"-", "4"}], ",", 
+   RowBox[{"-", "3"}], ",", 
+   RowBox[{"-", "2"}], ",", 
+   RowBox[{"-", "3"}], ",", 
+   RowBox[{"-", "4"}], ",", 
+   RowBox[{"-", "5"}], ",", 
+   RowBox[{"-", "6"}], ",", 
+   RowBox[{"-", "7"}], ",", 
+   RowBox[{"-", "6"}], ",", 
+   RowBox[{"-", "5"}], ",", 
+   RowBox[{"-", "4"}], ",", 
+   RowBox[{"-", "3"}], ",", 
+   RowBox[{"-", "2"}], ",", 
+   RowBox[{"-", "3"}], ",", 
+   RowBox[{"-", "4"}], ",", 
+   RowBox[{"-", "3"}], ",", 
+   RowBox[{"-", "2"}], ",", 
+   RowBox[{"-", "1"}], ",", "0", ",", "1", ",", "0", ",", 
+   RowBox[{"-", "1"}], ",", 
+   RowBox[{"-", "2"}], ",", 
+   RowBox[{"-", "3"}], ",", 
+   RowBox[{"-", "4"}], ",", 
+   RowBox[{"-", "3"}], ",", 
+   RowBox[{"-", "2"}], ",", 
+   RowBox[{"-", "1"}], ",", "0", ",", 
+   RowBox[{"-", "1"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6330812672802916`*^9, {3.633085724615425*^9, 3.633085733625787*^9}}]
+}, Open  ]],
+
+Cell["\<\
+
+
+If the particle travels at 1 m/s. How long does it take the particle to \
+travel 50 steps?
+\
+\>", "Text",
+ CellFrame->{{0, 0}, {0.5, 0}},
+ CellChangeTimes->{{3.598205235213538*^9, 3.598205296200432*^9}}],
+
+Cell[TextData[{
+ " We have determined where we will end up if we take a one dimensional \
+random walk of 50 steps and how long it will take to arrive.\n\ta. Write a \
+program that will collect data for the the final position of 1000 random \
+walks of each with 50 steps.  Plot the positions.  Is there a lot of \
+variation in the distance traveled?  Explain.\n\t\n\tb. Find the mean \
+distance traveled amoung all 1000 random walks and find the mean squared \
+distance traveled for all 1000 random walks.  \n\t\nNow lets investigate how \
+the mean squared displacement from the zero relates to the number of steps \
+taken and the size of the steps. \n\tc. Plot the mean squared distance vs \
+number of steps for random walks of variable number of steps (instead of \
+taking 50 take a range from .  What is the relationship between number of \
+steps and mean squared distance?  \nPlot the mean squared distance vs step \
+size for random walks of variable step size.  What is the relationship \
+between step size and mean squared distance? This dependence is a hallmark of \
+diffusional motion. \n\n",
+ StyleBox["Place the answers and graphs to part c in chelms netfiles",
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{{3.5982053254253545`*^9, 3.598205339564768*^9}, {
+   3.5982053695687685`*^9, 3.598205450547865*^9}, {3.5982056190395365`*^9, 
+   3.5982056376745367`*^9}, {3.627669688256461*^9, 3.627669688489484*^9}, {
+   3.6276697309387283`*^9, 3.627669736867321*^9}, {3.627670112341865*^9, 
+   3.627670165118142*^9}, {3.6276703121458435`*^9, 3.627670365596188*^9}, {
+   3.6276704275163794`*^9, 3.6276704341720448`*^9}, {3.627670498641491*^9, 
+   3.6276705030859356`*^9}, {3.6276707807837024`*^9, 
+   3.6276708610687304`*^9}, {3.627671536456262*^9, 3.627671569043521*^9}, {
+   3.6276716022548413`*^9, 3.6276716221368294`*^9}, 3.630065859132872*^9, {
+   3.630065916907872*^9, 3.630065934153872*^9}, {3.63308287118184*^9, 
+   3.633082873071193*^9}, {3.6330830050178037`*^9, 3.6330830201730747`*^9}},
+ TextAlignment->Left]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+ShowSelection->True,
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (December 4, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 142, 3, 91, "Title"],
+Cell[712, 27, 1294, 29, 141, "Text"],
+Cell[CellGroupData[{
+Cell[2031, 60, 308, 4, 64, "Section"],
+Cell[2342, 66, 579, 10, 87, "Text"],
+Cell[CellGroupData[{
+Cell[2946, 80, 2704, 75, 332, "Input"],
+Cell[5653, 157, 1320, 40, 52, "Output"]
+}, Open  ]],
+Cell[6988, 200, 215, 8, 95, "Text"],
+Cell[7206, 210, 2061, 31, 239, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

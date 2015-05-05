@@ -1,0 +1,164 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5414,        155]
+NotebookOptionsPosition[      4696,        126]
+NotebookOutlinePosition[      5042,        141]
+CellTagsIndexPosition[      4999,        138]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"myList", " ", "=", " ", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\Users\\\\Omair\\Documents\\\\Spring Semester \
+2015\\\\Computational Methods\\\\Lab11\\\\totalOutput.dat\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", "myList", "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.6343153289456244`*^9, 3.6343153836242404`*^9}, {
+   3.6343154721757917`*^9, 3.634315513673117*^9}, {3.634315586677658*^9, 
+   3.634315620183358*^9}, {3.6343159405166245`*^9, 3.6343159713184023`*^9}, 
+   3.6343160177722178`*^9, {3.6343160728391123`*^9, 3.634316081023901*^9}, {
+   3.634316400200369*^9, 3.6343164004905663`*^9}, 3.634316937010573*^9, {
+   3.634317004196038*^9, 3.6343170301203423`*^9}},
+ EmphasizeSyntaxErrors->True],
+
+Cell[BoxData["200"], "Output",
+ CellChangeTimes->{{3.6343170047433953`*^9, 3.6343170305726547`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SumDivident", " ", "=", " ", "0"}], ";", " ", 
+  RowBox[{"SumDivisor", " ", "=", " ", "0"}], ";", " ", 
+  RowBox[{"i", "=", "1"}], ";", " ", 
+  RowBox[{"While", " ", "[", " ", 
+   RowBox[{
+    RowBox[{"i", "<", " ", 
+     RowBox[{"Length", "[", "myList", "]"}]}], ",", " ", 
+    "\[IndentingNewLine]", "\t\t\t", 
+    RowBox[{
+     RowBox[{"SumDivisor", " ", "=", " ", 
+      RowBox[{"SumDivisor", " ", "+", " ", 
+       RowBox[{"myList", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+     "\t\t\t", 
+     RowBox[{"SumDivident", " ", "=", " ", 
+      RowBox[{"SumDivident", " ", "+", " ", 
+       RowBox[{"myList", "[", 
+        RowBox[{"[", 
+         RowBox[{"i", "+", "1"}], "]"}], "]"}]}]}], ";", 
+     "\[IndentingNewLine]", "\t\t\t", 
+     RowBox[{"i", "=", " ", 
+      RowBox[{"i", "+", "2"}]}], ";"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.634315516033755*^9, 3.6343155362890825`*^9}, {
+  3.634315633121493*^9, 3.6343157929703894`*^9}, {3.6343158314896126`*^9, 
+  3.634315842237219*^9}, {3.6343158831261024`*^9, 3.6343159267268944`*^9}, {
+  3.6343160033150005`*^9, 3.634316061139845*^9}, {3.63431612008348*^9, 
+  3.634316251718459*^9}, {3.634316297125556*^9, 3.634316397237274*^9}, {
+  3.6343164411782866`*^9, 3.6343164645708413`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.6343160852318435`*^9, 3.63431608800482*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{"SumDivisor", "\[IndentingNewLine]", "SumDivident"}], "Input",
+ CellChangeTimes->{{3.634315850182831*^9, 3.6343158548440943`*^9}, {
+  3.634316466896469*^9, 3.634316469742485*^9}, {3.634316923330905*^9, 
+  3.6343169258536963`*^9}, {3.6343170446566195`*^9, 3.6343170460726204`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "784761", "}"}]], "Output",
+ CellChangeTimes->{3.6343170463798075`*^9, 3.6343170769243975`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", "1000000", "}"}]], "Output",
+ CellChangeTimes->{3.6343170463798075`*^9, 3.6343170769264*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ValueOfPi", " ", "=", " ", 
+  RowBox[{
+   RowBox[{
+    FractionBox["SumDivisor", "SumDivident"], "*", "4"}], " ", "//", "N"}]}]],\
+ "Input",
+ CellChangeTimes->{{3.634316490484188*^9, 3.6343165059910774`*^9}, {
+  3.634316914015333*^9, 3.634316930830183*^9}, {3.6343170810743394`*^9, 
+  3.6343170972437577`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "3.139044`", "}"}]], "Output",
+ CellChangeTimes->{{3.6343165035163374`*^9, 3.6343165065244627`*^9}, 
+   3.6343168256348853`*^9, {3.6343168913613153`*^9, 3.6343169408462577`*^9}, {
+   3.6343170522329435`*^9, 3.6343170979052205`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "The", " ", "value", " ", "of", " ", "PI", " ", "obtained", " ", "was", 
+    " ", "3.13904", " ", "when", " ", "the", " ", "experiment", " ", "was", 
+    " ", "repeated", " ", "100", " ", "times", " ", "times", " ", "meaning", 
+    " ", "100", "*", "10000", " ", "throws"}], " ", "*)"}], " "}]], "Input",
+ CellChangeTimes->{{3.6343169425745077`*^9, 3.634316958760932*^9}, {
+  3.6343171021912565`*^9, 3.63431712088747*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.634316884047149*^9, 3.6343168889375963`*^9}}]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (December 4, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 787, 15, 72, "Input"],
+Cell[1370, 39, 100, 1, 31, "Output"]
+}, Open  ]],
+Cell[1485, 43, 1314, 29, 92, "Input"],
+Cell[2802, 74, 93, 1, 31, "Input"],
+Cell[CellGroupData[{
+Cell[2920, 79, 294, 3, 52, "Input"],
+Cell[3217, 84, 123, 2, 31, "Output"],
+Cell[3343, 88, 120, 2, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3500, 95, 334, 8, 46, "Input"],
+Cell[3837, 105, 260, 4, 31, "Output"]
+}, Open  ]],
+Cell[4112, 112, 483, 9, 31, "Input"],
+Cell[4598, 123, 94, 1, 31, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

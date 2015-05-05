@@ -1,0 +1,57 @@
+#!/bin/sh
+#PBS -N mathematica
+#PBS -q batch
+
+# C shell script for running jobs on the remote nodes on gluon. It removes debris from the previous job and
+# copies the necessary files from the head node out to the remote node. Runs Mathematica assuming the name of
+# the input file is my_math.m. Renames and copies the output file back to the head node. - gpg (2/17/12)
+#
+# usage: run_math.sh
+#
+
+# start time
+echo It is now `date`.
+
+# input templates for this job. These are modified in submit.pl for each job.
+CASE=1
+USER="test"
+
+echo "CASE=$CASE INPUT FILE=$INPUT_FILE Running on `hostname`."
+echo I was given the following slots to run:
+cat ${PBS_NODEFILE}
+echo It is now `date`.
+
+# define subdirectories needed to run code.
+WORKAREA="/tmp/$USER/mathematica/$CASE"
+MYAREA="/home/$USER/compPhys/"
+
+# delete old directories on remote nodes to get rid of previous stuff and create them anew for this run.
+rm -r $WORKAREA
+mkdir -p $WORKAREA
+
+# go to the WORKAREA and move the appropriate input data to the remote node.
+cd $WORKAREA
+cp $MYAREA/run/myMath.m $WORKAREA/myMath.m
+
+# run mathematica. 
+echo ;echo "Starting Mathematica. ******************************"; echo  
+/usr/local/bin/math -noprompt -pwfile /home/$USER/compPhys/run/math-license -run '<<myMath.m'
+# add a linefeed at the end of the output file.
+echo >> myMathOutput.dat
+echo ;echo "Done!. *********************************"; echo 
+
+# Copy output file back to the master and clean up.
+if [ "$CASE" -lt 10 ]
+    then
+    cp $WORKAREA/myMathOutput.dat $MYAREA/run/results/myMathOutput0$CASE.dat
+    else
+    cp $WORKAREA/myMathOutput.dat $MYAREA/run/results/myMathOutput$CASE.dat
+fi
+
+rm -r $WORKAREA
+
+echo It is now `date`.
+
+Sleep 60
+
+echo It is now `date`.

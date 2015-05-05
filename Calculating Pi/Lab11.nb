@@ -1,0 +1,139 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4380,        130]
+NotebookOptionsPosition[      3866,        109]
+NotebookOutlinePosition[      4212,        124]
+CellTagsIndexPosition[      4169,        121]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"nthrows", " ", "=", " ", "10000"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"radius", "=", "1.0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nhits", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"x0", "=", 
+        RowBox[{"RandomReal", "[", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "radius"}], "}"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"y0", "=", 
+        RowBox[{"RandomReal", "[", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "radius"}], "}"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"r0", "=", 
+        SqrtBox[
+         RowBox[{
+          SuperscriptBox["x0", "2"], " ", "+", " ", 
+          SuperscriptBox["y0", "2"]}]]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"r0", "<=", "radius"}], ",", " ", 
+         RowBox[{"nhits", "++"}]}], "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "nthrows"}], "}"}]}], 
+     "\[IndentingNewLine]", "]"}], ";"}], " ", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dnhits", " ", "=", " ", 
+     SqrtBox["nhits"]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"myPi", "=", 
+     RowBox[{"4", "*", 
+      FractionBox["nhits", "nthrows"]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dmyPi", "=", 
+     RowBox[{"4", "*", 
+      FractionBox["dnhits", "nthrows"]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ratio", " ", "=", " ", 
+     FractionBox["myPi", "\[Pi]"]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dratio", "=", 
+     FractionBox["dmyPi", "\[Pi]"]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"results", "=", 
+     RowBox[{"{", 
+      RowBox[{"nhits", ",", "nthrows"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<myPi=\>\"", ",", 
+     RowBox[{"N", "[", "myPi", "]"}], ",", "\"\< \[PlusMinus] \>\"", ",", 
+     RowBox[{"N", "[", "dmyPi", "]"}], ",", "\"\<; Ratio =\>\"", ",", 
+     RowBox[{"N", "[", "ratio", "]"}], ",", "\"\< \[PlusMinus] \>\"", ",", 
+     RowBox[{"N", "[", "dratio", "]"}]}], "]"}]}]}]], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ InitializationCell->True,
+ CellChangeTimes->{{3.634295562561531*^9, 3.6342955771088257`*^9}, {
+   3.6342958111924863`*^9, 3.6342958197175183`*^9}, 3.6342960144863253`*^9}],
+
+Cell[BoxData[{
+ StyleBox[
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<myMathOutput.dat\>\"", ",", " ", "results"}], "]"}],
+  FontFamily->"Monospace"], "\[IndentingNewLine]", 
+ RowBox[{"Quit", "[", "]"}]}], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ InitializationCell->True,
+ CellChangeTimes->{{3.634295185834924*^9, 3.63429518585594*^9}, {
+   3.634295341830306*^9, 3.6342953435324955`*^9}, 3.6342960144863253`*^9, {
+   3.634297632586457*^9, 3.6342977246425905`*^9}, {3.63431456714859*^9, 
+   3.6343145688938313`*^9}}]
+}, Open  ]],
+
+Cell[BoxData["\<\"myMathOutput.dat\"\>"], "Output",
+ CellChangeTimes->{{3.6342976881687775`*^9, 3.634297728136063*^9}}]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (December 4, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 2609, 68, 484, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ InitializationCell->True],
+Cell[3192, 92, 536, 11, 52, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ InitializationCell->True]
+}, Open  ]],
+Cell[3743, 106, 119, 1, 31, "Output"]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,304 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     11138,        295]
+NotebookOptionsPosition[     10266,        263]
+NotebookOutlinePosition[     10862,        284]
+CellTagsIndexPosition[     10819,        281]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Free Fall with Air resistance
+First Order Differential Equation\
+\>", "Title",
+ CellChangeTimes->{{3.623600802559153*^9, 3.623600828454153*^9}},
+ TextAlignment->Center,
+ FontFamily->"Times"],
+
+Cell["", "Text",
+ CellChangeTimes->{{3.6236008427741528`*^9, 3.623600856145153*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell["1. An Example.", "Section",
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ StyleBox["Consider the differential equation shown below which is \
+reminiscent of the nuclear decay law.\n\n                                     \
+         ",
+  FontSize->14],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox["dy", "dt"], " ", "=", " ", 
+    RowBox[{"-", " ", "y"}]}], TraditionalForm]],
+  FontSize->14],
+ StyleBox["\n            \n Applying the finite difference equation produces \
+a Euler Algorithm that can be solved iteratively.\n \n                        \
+                     ",
+  FontSize->14],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["y", 
+     RowBox[{"n", "+", "1"}]], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", "h"}], ")"}], 
+     SubscriptBox["y", "n"]}]}], TraditionalForm]],
+  FontSize->14],
+ StyleBox["\n                                             \nThe code below \
+presents an algorithm for solving this equation. You might want to experiment \
+with different initial conditions and stepsizes to explore the behavior of \
+the algorithm.",
+  FontSize->14]
+}], "Text",
+ CellChangeTimes->{{3.623600893601153*^9, 3.623600924635153*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Initial", " ", "Conditions", " ", "to", " ", "start", " ", "iteration"}], 
+   " ", "*)"}], "\n", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"y0", " ", "=", " ", "5.0"}], " ", ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"starting", " ", "value", " ", "of", " ", "y"}], " ", "*)"}], 
+    "\n", 
+    RowBox[{"t0", " ", "=", " ", "0.0"}], ";"}], "  ", 
+   RowBox[{"(*", " ", 
+    RowBox[{"starting", " ", "value", " ", "of", " ", "t"}], " ", "*)"}], 
+   "\n", "\n", 
+   RowBox[{"(*", "\t ", 
+    RowBox[{"Set", " ", "up", " ", "the", " ", "starting", " ", 
+     RowBox[{"point", "."}]}], " ", "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"y", "=", "y0"}], ";"}], "   ", 
+   RowBox[{"(*", " ", 
+    RowBox[{"initial", " ", "value", " ", "of", " ", "y"}], " ", "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"deltat", " ", "=", " ", "0.1"}], ";", " ", 
+    RowBox[{"(*", " ", "stepsize", " ", "*)"}], "\n", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "create", " ", "a", "  ", "list", " ", "t1", " ", "of", " ", "ordered", 
+      " ", 
+      RowBox[{"(", 
+       RowBox[{"t", ",", "y"}], ")"}], " ", "to", " ", "store", " ", "the", 
+      " ", "data"}], " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"data1", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{"t0", ",", "y0"}], "}"}], "}"}]}], ";"}], "\n", "\n", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"the", " ", "limits", " ", "of", " ", "the", " ", 
+      RowBox[{"iterations", ".", " ", "since"}], " ", "we", " ", "already", 
+      "\n", "\t  ", "have", " ", "y", 
+      RowBox[{"(", 
+       RowBox[{"t", "=", "0"}], ")"}], " ", "given"}], ",", " ", 
+     RowBox[{
+      RowBox[{
+      "then", " ", "the", " ", "first", " ", "value", " ", "of", " ", "\n", 
+       "\t\t ", "y", " ", "we", " ", "calculate", " ", "is", " ", "for", " ", 
+       "t"}], "=", 
+      RowBox[{"deltat", "."}]}]}], "  ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"tmin", " ", "=", " ", "0.1"}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"first", " ", "calculated", " ", "point"}], " ", "*)"}], "\n", 
+    RowBox[{"tmax", " ", "=", " ", "10.0"}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"maximum", " ", "t"}], " ", "*)"}], "\n", 
+    RowBox[{"stepsize", " ", "=", " ", "deltat"}], ";"}], " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{"step", " ", "size"}], " ", "*)"}], "\n", "\n", 
+   RowBox[{"(*", " ", 
+    RowBox[{"set", " ", "up", " ", "iteration"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"yplus", " ", "=", " ", 
+        RowBox[{"y", "*", 
+         RowBox[{"(", 
+          RowBox[{"1", "-", "stepsize"}], ")"}]}]}], ";", " ", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+        "get", " ", "the", " ", "next", " ", "value", " ", "of", " ", "y"}], 
+        " ", "*)"}], "\n", "\t", 
+       RowBox[{"y", "=", " ", "yplus"}], ";", "  ", 
+       RowBox[{"(*", 
+        RowBox[{
+        "increment", " ", "y", " ", "for", " ", "the", " ", "next", " ", 
+         "step"}], " ", "*)"}], "\[IndentingNewLine]", "\t", 
+       RowBox[{"data1", " ", "=", " ", 
+        RowBox[{"Append", "[", 
+         RowBox[{"data1", ",", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "y"}], "}"}]}], "]"}]}]}], ",", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "add", " ", "the", " ", "new", " ", "data", " ", "to", " ", "the", " ",
+         "data", " ", "list"}], " ", "*)"}], "\[IndentingNewLine]", "\t", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "tmin", ",", "tmax", ",", "stepsize"}], "}"}]}], 
+     "\n", "]"}], ";"}], "\n", "data1", " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "check", " ", "that", " ", "we", " ", "have", " ", "data", " ", "in", " ",
+      "our", " ", "list"}], " ", "*)"}]}]}]], "Input",
+ CellChangeTimes->{{3.623603066878153*^9, 3.623603162842153*^9}, {
+  3.6236032021081533`*^9, 3.6236032176631527`*^9}, {3.623603263290153*^9, 
+  3.6236032898991528`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"p1", "=", 
+  RowBox[{"ListPlot", "[", 
+   RowBox[{"data1", ",", 
+    RowBox[{"PlotRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"t0", ",", "tmax"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", 
+         RowBox[{"1.1`", " ", "y0"}]}], "}"}]}], "}"}]}], ",", 
+    RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+    RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+    RowBox[{"FrameLabel", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<t\>\"", ",", "\"\<y\>\"", ",", "\"\<\>\"", ",", "\"\<\>\""}], 
+      "}"}]}], ",", 
+    RowBox[{"PlotStyle", "\[Rule]", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"1", ",", "0", ",", "0"}], "]"}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6236026926481533`*^9, 3.623602694318153*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2. Poor Lieutenant Chisov.", "Section",
+ CellChangeTimes->{{3.5994984036729827`*^9, 3.5994984038179827`*^9}},
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ "In January, 1942 a Soviet Ilyushin 4 flown by Lieutenant I.M.Chisov was \
+badly damaged by German gunfire. At an altitude of 21,980 feet Lieutenant \
+Chisov fell from the plane. At this height he lost conscienceness and was not \
+able to open his parachute when he fell. He landed on the slopes of a \
+snow-covered ravine and slid to the bottom. He suffered a fractured pelvis \
+and severe spinal damage, but lived. \n\nWhen an object like the good \
+lieutenant falls through a resistive medium (like air) its acceleration is \
+retarded by a force proportional to the square of its speed.\n\n              \
+                         ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "f"], " ", "=", " ", 
+    RowBox[{
+     FractionBox["1", "2"], " ", "\[Rho]", " ", "C", " ", "A", " ", 
+     SuperscriptBox["v", "2"]}]}], TraditionalForm]]],
+ "                (b from our in class example,  ",
+ Cell[BoxData[
+  RowBox[{"b", "=", 
+   RowBox[{
+    FractionBox["1", "2"], " ", "\[Rho]", " ", "C", " ", "A"}]}]]],
+ ")\n                                       \nConsider an object falling \
+through the air accelerated by the force of gravity and retarded by air \
+friction. Use the discussion in ",
+ StyleBox["Principles of Physics ",
+  FontWeight->"Bold"],
+ "by Serway and Jewett or use the internet to choose parameters that might be \
+appropriate for Lieutenant Chisov.\n\na. What is the total force on the \
+Lieutenant Chisov?\n\nb. Express your result from part a. as a first-order, \
+ordinary differential equation where the speed v is a function of the time t.\
+\n\nc. Solve the equation from part b using the Euler Algorithm for velocity \
+and stepsize of  \[CapitalDelta]t = 0.1 s. Make a plot of the object's speed \
+as a function of time. Assume the object (Lieutenant Chisov) is dropped from \
+rest so v(t=0) = 0. \n\nd. Objects falling through a resistive medium \
+typically reach a terminal velocity. What is that velocity for skydivers? \
+Does the speed of the object in your model approach a limiting value? What is \
+that value? Is it consistent with the observed terminal velocity for \
+skydivers? \n\ne. Find the speed at t=25  s for several values of  \
+\[CapitalDelta]t in the range ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["10", 
+    RowBox[{
+     RowBox[{"-", "5"}], " "}]], TraditionalForm]]],
+ "s to 1.0 s. Is the solution stable over this range of stepsizes? A semilog \
+plot of your results may be appropriate to adequately view the results.\n\nf. \
+How fast was Lieutenant Chisov moving when he hit the ravine? \n\ng. Have we \
+done enough to figure out how long he had to contemplate the imminent impact?\
+\n\nPlace answers to 2.c through 2.g in chelms netfiles\n"
+}], "Text",
+ CellChangeTimes->{{3.5357608710797167`*^9, 3.535760880639227*^9}, {
+  3.599926432989527*^9, 3.599926439089527*^9}, {3.600093101694421*^9, 
+  3.6000931037816296`*^9}, {3.623606939694153*^9, 3.6236071059981527`*^9}, {
+  3.6236071537871532`*^9, 3.6236072980571527`*^9}, {3.6298025739769263`*^9, 
+  3.629802578132342*^9}, {3.6298026150210304`*^9, 3.6298026273532634`*^9}},
+ TextAlignment->Left]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1280, 668},
+WindowMargins->{{137, Automatic}, {Automatic, 36}},
+DockedCells->FEPrivate`FrontEndResource[
+ "NotebookTemplatingExpressions", "AuthoringDockedCell"],
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+TaggingRules->{"NotebookTemplateVersion" -> 1., "NotebookTemplate" -> True},
+CellContext->Notebook,
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 200, 6, 146, "Title"],
+Cell[770, 30, 99, 2, 30, "Text"],
+Cell[CellGroupData[{
+Cell[894, 36, 55, 1, 64, "Section"],
+Cell[952, 39, 1136, 31, 194, "Text"],
+Cell[2091, 72, 4025, 98, 532, "Input"],
+Cell[6119, 172, 813, 22, 31, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6969, 199, 137, 2, 64, "Section"],
+Cell[7109, 203, 3129, 56, 595, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

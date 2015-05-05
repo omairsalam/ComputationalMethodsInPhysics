@@ -1,0 +1,495 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     21162,        486]
+NotebookOptionsPosition[     19104,        420]
+NotebookOutlinePosition[     20691,        470]
+CellTagsIndexPosition[     20648,        467]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Shooting the Sun with Gluon", "Title",
+ CellChangeTimes->{{3.538321630021449*^9, 3.538321633965002*^9}, {
+  3.5383520716222973`*^9, 3.538352071963242*^9}, {3.538479967138732*^9, 
+  3.5384799758837*^9}, {3.5386126051872263`*^9, 3.538612607055828*^9}, {
+  3.6279203291539803`*^9, 3.6279203326139803`*^9}},
+ TextAlignment->Center,
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ StyleBox["Before you begin you will need to move the file putty.exe (located \
+on blackboard) to your computer under C:\\ProgramFiles\\WinSCP",
+  FontWeight->"Bold"],
+ "\n\nWe now take advantage of the computing cluster to study the phase space \
+of our projectiles in the Earth-Sun system. Starting with your code for \
+calculating the trajectory of an object that has been launched at the Sun, \
+you will adapt that code for running on the cluster and then map out the \
+dependence of the final distance from the center of mass (CM) after a \
+suitable time on the initial angle and speed of the projectile (see the \
+figure below). "
+}], "Text",
+ CellChangeTimes->{{3.538321314112217*^9, 3.538321613814233*^9}, {
+   3.538321779198209*^9, 3.538321781957818*^9}, {3.538480604115473*^9, 
+   3.538480847882762*^9}, {3.538482984738727*^9, 3.538483103099001*^9}, {
+   3.538492325987137*^9, 3.538492334795295*^9}, 3.538502105792756*^9, {
+   3.538612612832182*^9, 3.538612643293816*^9}, {3.538612673972353*^9, 
+   3.538612695099286*^9}, {3.538836167398192*^9, 3.538836504982663*^9}, 
+   3.538836716751992*^9, {3.539007798190186*^9, 3.539007817802829*^9}, {
+   3.539359112017498*^9, 3.539359202785172*^9}, {3.6040838712317133`*^9, 
+   3.604083871678758*^9}, {3.6049145298915453`*^9, 3.604914532406545*^9}},
+ FontSize->14],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[RasterBox[CompressedData["
+1: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
+cw9WOILk0+u3J78KwK5yzsT+8gcBx5Lp
+    "], {{0, 284}, {337, 0}}, {0, 255},
+    ColorFunction->RGBColor],
+   BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+   Selectable->False],
+  BaseStyle->"ImageGraphics",
+  ImageSize->{195., Automatic},
+  ImageSizeRaw->{337, 284},
+  PlotRange->{{0, 337}, {0, 284}}]], "Input",
+ TextAlignment->Center],
+
+Cell[TextData[{
+ "To map the ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "0"], TraditionalForm]]],
+ "-\[Phi] dependence of the distance of the projectile from the CM of the \
+Earth-Sun system requires calculating many trajectories. To visualize the \
+results we assign a color to each point in the ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "0"], TraditionalForm]]],
+ "-\[Phi] plane related to the distance from the CM. The color scheme will be \
+the following.\n\nBlue points - ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["d", "c"], " ", "=", " ", 
+    RowBox[{"-", "2"}]}], TraditionalForm]]],
+ "; hit the \[OpenCurlyQuote] Earth\[CloseCurlyQuote]\nBlack Point - ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["d", "c"], " ", "=", " ", 
+    RowBox[{"-", "1"}]}], TraditionalForm]]],
+ "; hit the Sun.\nGreen \[RightArrow] Red - ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["d", "c"], TraditionalForm]]],
+ " = calculated value; red is far from the CM,  green is close.\n\nBefore \
+getting started we consider a \[OpenCurlyQuote]simple\[CloseCurlyQuote] \
+example to learn the skills to take advantage of the computing power of the \
+cluster. We will routinely refer to the previous laboratory Lab 10 adn Lab 11."
+}], "Text",
+ CellChangeTimes->{{3.5388367029093027`*^9, 3.5388367985152063`*^9}, {
+  3.539007837722061*^9, 3.5390078664991913`*^9}, {3.5390101406277637`*^9, 
+  3.539010168795127*^9}, {3.539359213791567*^9, 3.539359278959611*^9}, {
+  3.5393593232065*^9, 3.5393593949824343`*^9}, {3.6049145673495455`*^9, 
+  3.6049145867435455`*^9}, {3.62792177617698*^9, 3.6279217910149803`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["1. Shooting the Sun with Gluon", "Section",
+ CellChangeTimes->{{3.5390092949140368`*^9, 3.53900930716298*^9}, {
+  3.539009357891567*^9, 3.539009358378284*^9}, {3.6279218643449802`*^9, 
+  3.62792187424098*^9}}],
+
+Cell["\<\
+Prepare your code from lab 9 for submisison to the cluster.  Refer to lab 11 \
+for help with preparation.  Let se range from 0 to 15 and phi from 0 to 2*Pi. \
+Use the command in Part 6 of this laboratory for plotting.\
+\>", "Text",
+ CellChangeTimes->{{3.539009309887135*^9, 3.5390093750747023`*^9}, {
+  3.539359817446701*^9, 3.539359818023197*^9}, {3.604164975072795*^9, 
+  3.604164976851795*^9}, {3.6041657908547955`*^9, 3.6041658145577955`*^9}, {
+  3.62792181872598*^9, 3.62792185210498*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2. A Plotting Command.", "Section",
+ CellChangeTimes->{{3.538836844322715*^9, 3.538836861466864*^9}, {
+  3.53900926244287*^9, 3.5390092745552797`*^9}, {3.539009378507206*^9, 
+  3.539009378939398*^9}, {3.539285752779791*^9, 3.539285753313094*^9}, {
+  3.6279218786479797`*^9, 3.62792187880898*^9}}],
+
+Cell[TextData[{
+ "Here we re-introduce the plotting command first encountered in the \
+laboratory entitled ",
+ StyleBox["Shooting the Sun",
+  FontSlant->"Italic"],
+ ". Once you have obtained the data to plot the grid use the following \
+command to make that plot. The assumptions that go into the code below are \
+that (1) the input file is made of rows with three columns consisting of \
+initial \[Phi] and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "0"], TraditionalForm]]],
+ " and the final distance from the CM of the Earth-Moon system, (2) an entry \
+in column three of \[OpenCurlyQuote]-2\[CloseCurlyQuote] means the projectile \
+hit the Earth, and (3) an entry of \[OpenCurlyQuote]-1\[CloseCurlyQuote] \
+means the projectile struck the Sun. A sample file that can be used to \
+demonstrate the command is available on the course webpage."
+}], "Text",
+ CellChangeTimes->{{3.538350893650497*^9, 3.538351117083177*^9}, {
+  3.538479559880889*^9, 3.5384795606349583`*^9}, {3.539285758404829*^9, 
+  3.539285788639462*^9}, {3.5392858454797688`*^9, 3.5392858457990503`*^9}, {
+  3.539359830734583*^9, 3.539359854692789*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Read", " ", "in", " ", "the", " ", "data", " ", 
+    RowBox[{"(", 
+     RowBox[{"phi", ",", " ", "v0", ",", " ", "dC"}], ")"}], " ", "and", " ", 
+    "measure", " ", "some", " ", "properties", " ", "for", " ", "the", " ", 
+    RowBox[{"plot", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"t1", " ", "=", " ", 
+     RowBox[{"ReadList", "[", 
+      RowBox[{
+      "\"\</media/flash/215s12/examples/3body/threeBodyTest.dat\>\"", ",", 
+       RowBox[{"{", 
+        RowBox[{"Number", ",", "Number", ",", "Number"}], "}"}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"myNmax", "=", 
+     RowBox[{"Length", "[", "t1", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"mymin", "=", "1"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"mymin", "=", 
+     RowBox[{"Min", "[", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"t1", "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "3"}], "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", "myNmax"}], "}"}]}], "]"}], "]"}]}], 
+    ";"}], "\n", 
+   RowBox[{
+    RowBox[{"mymax", "=", 
+     RowBox[{"Max", "[", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"t1", "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "3"}], "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", "myNmax"}], "}"}]}], "]"}], "]"}]}], 
+    ";"}], "\n", 
+   RowBox[{
+    RowBox[{"range", "=", 
+     RowBox[{"mymax", "-", "mymin"}]}], ";"}], "\n", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "Make", " ", "the", " ", "final", " ", "table", " ", "with", " ", "the", 
+     " ", "color", " ", "code", " ", "for", " ", "the", " ", "final", " ", 
+     "distance", " ", "as", " ", "the", " ", "last", " ", 
+     RowBox[{"element", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t2", "=", 
+     RowBox[{"Table", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"t1", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", ",", "1"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+         
+         RowBox[{"t1", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", ",", "2"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+         
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"t1", "[", 
+             RowBox[{"[", 
+              RowBox[{"i", ",", "3"}], "]"}], "]"}], "<", "0"}], ",", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"t1", "[", 
+               RowBox[{"[", 
+                RowBox[{"i", ",", "3"}], "]"}], "]"}], "\[Equal]", 
+              RowBox[{"-", "1"}]}], ",", "0.9", ",", "0.7"}], "]"}], ",", 
+           RowBox[{"0.25", "*", 
+            RowBox[{"(", 
+             RowBox[{"1", "-", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"t1", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"i", ",", "3"}], "]"}], "]"}], "-", "mymin"}], 
+                 ")"}], "/", "range"}], ")"}]}], ")"}]}]}], "]"}]}], "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "myNmax"}], "}"}]}], 
+      "\[IndentingNewLine]", "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.538351164016985*^9, 3.538351286164007*^9}, {
+  3.538351923065936*^9, 3.5383520081443863`*^9}, {3.539285596264495*^9, 
+  3.5392855971787043`*^9}}],
+
+Cell[TextData[{
+ "The code below defines a new function ",
+ StyleBox["ThreeBodyScatterPlot",
+  FontFamily->"Liberation Mono"],
+ " used to plot the results of the calculation and shows its usage."
+}], "Text",
+ CellChangeTimes->{{3.538351324407524*^9, 3.538351365632449*^9}, {
+  3.5383514084396257`*^9, 3.538351442288105*^9}, {3.538351549550087*^9, 
+  3.538351554021665*^9}}],
+
+Cell["\<\
+(* Define the plotting function. *)
+ThreeBodyScatterPlot[data_/;
+   MatrixQ[data, NumberQ] &&
+   Length[First[data]] === 3,fun_, opts___] :=
+   Show[Graphics[
+          {PointSize[0.005],
+           Map[{fun[Last[#]],Point[Take[#, 2]]}&, data]
+          }, opts
+        ]
+ ]\
+\>", "Input",
+ CellChangeTimes->{{3.5378738649265347`*^9, 3.537873865382238*^9}, {
+   3.537873919440216*^9, 3.5378739198152533`*^9}, {3.537875236392964*^9, 
+   3.537875236672636*^9}, {3.537875266890154*^9, 3.53787527439412*^9}, {
+   3.5378758467615213`*^9, 3.537875847016608*^9}, {3.537876978173908*^9, 
+   3.537876978533917*^9}, {3.537877085097159*^9, 3.537877086032691*^9}, {
+   3.537880521423189*^9, 3.537880583747208*^9}, {3.537880618883443*^9, 
+   3.5378806965417957`*^9}, {3.5378808161045017`*^9, 3.537880832633527*^9}, 
+   3.5378809989919567`*^9, {3.5378812253881893`*^9, 3.537881277675537*^9}, 
+   3.537881311533979*^9, 3.537889528426298*^9, {3.537893275069529*^9, 
+   3.5378932998204203`*^9}, {3.537893379879301*^9, 3.537893380590107*^9}, {
+   3.537893521363276*^9, 3.537893551652616*^9}, 3.537893585248487*^9, {
+   3.5378936159805737`*^9, 3.537893646335431*^9}, {3.537893682671542*^9, 
+   3.537893710801882*^9}, {3.5383514226661*^9, 3.538351430814939*^9}},
+ AspectRatioFixed->True],
+
+Cell["\<\
+(* Make the plot. We also keep track of the time for future reference. *)
+start=AbsoluteTime[];
+p5=ThreeBodyScatterPlot[t2,
+              Hue[#,1,If[#==0.9,0,1]]&,      
+              Axes->True,
+              AxesLabel->{\"x\",\"y\",\"z\"},
+              AspectRatio->1,
+              Frame->True,
+              PlotRange->{ {0,2*Pi},
+                           {0,15}},
+              BaseStyle->FontSize->16,
+              ImageSize->8*72,
+              Frame->True,
+              FrameLabel->{\"phi (rad)\",\"v0/vescape\"}
+             ]
+stop=AbsoluteTime[];
+Print[\"Elapsed time =\",stop-start,\" s.\"]\
+\>", "Input",
+ CellChangeTimes->{{3.5378738649265347`*^9, 3.537873865382238*^9}, {
+   3.537873919440216*^9, 3.5378739198152533`*^9}, {3.537875236392964*^9, 
+   3.537875236672636*^9}, {3.537875266890154*^9, 3.53787527439412*^9}, {
+   3.5378758467615213`*^9, 3.537875847016608*^9}, {3.537876978173908*^9, 
+   3.537876978533917*^9}, {3.537877085097159*^9, 3.537877086032691*^9}, {
+   3.537880521423189*^9, 3.537880583747208*^9}, {3.537880618883443*^9, 
+   3.5378806965417957`*^9}, {3.5378808161045017`*^9, 3.537880832633527*^9}, 
+   3.5378809989919567`*^9, {3.5378812253881893`*^9, 3.537881277675537*^9}, 
+   3.537881311533979*^9, 3.537889528426298*^9, {3.5378898550462112`*^9, 
+   3.537889919364191*^9}, {3.537890085184927*^9, 3.53789009049676*^9}, {
+   3.537890124034219*^9, 3.537890164403779*^9}, {3.537890235534979*^9, 
+   3.537890297190076*^9}, {3.5378904392438297`*^9, 3.537890442473822*^9}, {
+   3.537890858101536*^9, 3.53789088468556*^9}, {3.537891220878459*^9, 
+   3.5378912264382687`*^9}, {3.5378913024339533`*^9, 3.53789131154499*^9}, {
+   3.537891432988484*^9, 3.537891434651417*^9}, {3.537891504873534*^9, 
+   3.5378915074142647`*^9}, {3.537891574039424*^9, 3.5378915827201233`*^9}, {
+   3.537891632228467*^9, 3.53789164004867*^9}, {3.537892701685655*^9, 
+   3.537892727381407*^9}, {3.537892789159487*^9, 3.5378927969264917`*^9}, {
+   3.537892984612863*^9, 3.537893081206395*^9}, {3.537893560291832*^9, 
+   3.537893565874955*^9}, {3.537893809122785*^9, 3.537893821729785*^9}, {
+   3.538329684163603*^9, 3.538329685387051*^9}, {3.538351559206822*^9, 
+   3.538351572880851*^9}, {3.538352032631024*^9, 3.538352033846231*^9}, {
+   3.5391768246464863`*^9, 3.5391768249479523`*^9}, {3.539176937936398*^9, 
+   3.5391769441757307`*^9}, {3.5392856954393787`*^9, 
+   3.5392857395574903`*^9}, {3.604165178088795*^9, 3.6041651904867954`*^9}, {
+   3.6041658270907955`*^9, 3.604165830730795*^9}},
+ AspectRatioFixed->True],
+
+Cell[TextData[StyleBox["\n\nPlace a copy of the plot of you gluon data along \
+with a few sentences describing what the results mean.  (Are there conditions \
+when the projectile hits the sun?  Are there conditions when the projectile \
+hits the earth?...)",
+ FontWeight->"Bold",
+ FontColor->RGBColor[1, 0.5, 0]]], "Text",
+ CellChangeTimes->{{3.6300747072955027`*^9, 3.6300747995027227`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1051, 658},
+WindowMargins->{{Automatic, 195}, {53, Automatic}},
+PrintingCopies->1,
+PrintingStartingPageNumber->1,
+PrintingPageRange->{1, Automatic},
+PageHeaders->{{
+   Cell[
+    TextData[{
+      StyleBox[
+       CounterBox["Page"], "PageNumber"], " ", "|", " ", 
+      StyleBox[
+       ValueBox["FileName"], "Header"]}], "Header", 
+    CellMargins -> {{0, Inherited}, {Inherited, Inherited}}], None, None}, {
+  None, None, 
+   Cell[
+    TextData[{
+      StyleBox[
+       ValueBox["FileName"], "Header"], " ", "|", " ", 
+      StyleBox[
+       CounterBox["Page"], "PageNumber"]}], "Header", 
+    CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}},
+PageFooters->{{None, None, None}, {None, None, None}},
+PageHeaderLines->{False, False},
+PageFooterLines->{False, False},
+PrintingOptions->{"FacingPages"->True,
+"FirstPageFace"->Right,
+"FirstPageFooter"->True,
+"FirstPageHeader"->True},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]], 
+   Cell[
+    StyleData["Text"], FontFamily -> "Times New Roman", FontSize -> 14, 
+    FontWeight -> "Plain", FontSlant -> "Plain", 
+    FontVariations -> {"StrikeThrough" -> False, "Underline" -> False}]}, 
+  Visible -> False, FrontEndVersion -> 
+  "10.0 for Microsoft Windows (64-bit) (July 1, 2014)", StyleDefinitions -> 
+  "PrivateStylesheetFormatting.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 355, 6, 91, "Title"],
+Cell[937, 30, 1331, 21, 107, "Text"],
+Cell[2271, 53, 4815, 84, 179, "Input"],
+Cell[7089, 139, 1629, 37, 182, "Text"],
+Cell[CellGroupData[{
+Cell[8743, 180, 215, 3, 70, "Section"],
+Cell[8961, 185, 504, 8, 49, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9502, 198, 302, 4, 70, "Section"],
+Cell[9807, 204, 1128, 21, 87, "Text"],
+Cell[10938, 227, 3549, 97, 272, "Input"],
+Cell[14490, 326, 373, 8, 30, "Text"],
+Cell[14866, 336, 1277, 25, 184, "Input"],
+Cell[16146, 363, 2535, 45, 303, "Input"],
+Cell[18684, 410, 392, 6, 91, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

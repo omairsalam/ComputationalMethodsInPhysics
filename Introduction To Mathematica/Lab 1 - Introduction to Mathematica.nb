@@ -1,0 +1,726 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     24789,        717]
+NotebookOptionsPosition[     22813,        651]
+NotebookOutlinePosition[     23309,        670]
+CellTagsIndexPosition[     23266,        667]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[{
+ "Introduction to the ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " \nComputing Environment"
+}], "Title",
+ TextAlignment->Center,
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ "This laboratory will introduce you to several of the aspects of ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " and plotting in the ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " environment. To begin notice on the brackets on the right, the groupings \
+indicate lines which are grouped.  The bracket with the triangle at the \
+bottoms indicates this section will expand if you double click on the \
+bracket, similarly you can minimize a section in the same way. The inner \
+bracket indicates lines which will excute at the same time.  You can you can \
+merge and group cells by right clicking."
+}], "Text",
+ CellChangeTimes->{{3.587819843092055*^9, 3.5878198435451*^9}, {
+  3.6230687086547594`*^9, 3.623068908454737*^9}, {3.623068944035178*^9, 
+  3.623068950782178*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["1. Basic ",
+  FontFamily->"Times New Roman"],
+ StyleBox["Mathematica",
+  FontFamily->"Times New Roman",
+  FontSlant->"Italic"],
+ StyleBox[" Functions",
+  FontFamily->"Times New Roman"]
+}], "Section",
+ CellChangeTimes->{{3.587822184942566*^9, 3.587822216647566*^9}, {
+  3.5878222604555655`*^9, 3.5878222919525657`*^9}, {3.5878223525655656`*^9, 
+  3.5878223639065657`*^9}}],
+
+Cell["\<\
+Once you enter a line you must hit \[OpenCurlyDoubleQuote]shift\
+\[CloseCurlyDoubleQuote]+ \
+\[OpenCurlyDoubleQuote]enter\[CloseCurlyDoubleQuote] to excute.  Notice the \
+cell ends when you excute.  You can insert a new cell by typing if you are at \
+the bottom of the page.  However if you would like to insert a new cell you  \
+can right click between two cells and and select insert new cell.  If you \
+would like the cell to be a text cell choose the type (title, heading...) If \
+you would like the cell to be a math cell then choose input. (The format of a \
+cell can be changed at any time using the tabs at the top of the screen).\
+\>", "Text",
+ CellChangeTimes->{{3.587822374444566*^9, 3.5878224090105658`*^9}, {
+  3.5878225340355654`*^9, 3.5878225653675656`*^9}, {3.623068963921178*^9, 
+  3.623069074233178*^9}, {3.623069174879178*^9, 3.623069255131178*^9}, {
+  3.623069312462178*^9, 3.623069415227178*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["\t",
+  FontColor->GrayLevel[0]],
+ StyleBox["Execute the following cells (shift + enter) ", "Text",
+  FontColor->GrayLevel[0]]
+}], "Subsection",
+ Evaluatable->False,
+ CellChangeTimes->{{3.5878224988155656`*^9, 3.5878224992505655`*^9}, {
+  3.623069106785178*^9, 3.6230691182321777`*^9}, {3.623069445410178*^9, 
+  3.623069452229178*^9}, {3.623069486427178*^9, 3.623069527072178*^9}, {
+  3.6230734147743177`*^9, 3.623073415679408*^9}},
+ Hyphenation->False,
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"2", "*", "6", " ", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"12", "+", "4"}], ")"}], "/", 
+   RowBox[{"(", "  ", 
+    RowBox[{"12", "-", "4"}], ")"}]}], "  "}]], "Input",
+ Hyphenation->False],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"2", "^", "3"}], ",", 
+   RowBox[{"Sqrt", "[", "2", "]"}], ",", 
+   RowBox[{"4", "!"}], ",", 
+   RowBox[{"4", "!!"}]}], "}"}]], "Input",
+ Hyphenation->False],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Sqrt", "[", "2", "]"}], "  ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "the", " ", "parenthesis", " ", "followed", " ", "by", " ", "a", " ", 
+    "astrick", " ", "indicates", " ", "a", " ", "comment", " ", "and", " ", 
+    "is", " ", "not", " ", 
+    RowBox[{"executed", ".", "  ", "To"}], " ", "end", " ", "the", " ", 
+    "comment", " ", "you", " ", "must", " ", "close", " ", "with", " ", "and",
+     " ", "asteriks", " ", "and", " ", "close", " ", "parenthesis"}], " ", 
+   "*)"}]}]], "Input",
+ CellChangeTimes->{{3.587822685574566*^9, 3.5878226909625654`*^9}, {
+  3.6230695298641777`*^9, 3.6230695933241777`*^9}}],
+
+Cell[TextData[{
+ "N[Sqrt[2]]  ",
+ StyleBox["(* note the capitol S and square brackets in Sqrt[], what is the \
+purpose of N? highlight and right click on N and select get help *)",
+  FontColor->GrayLevel[0.5]]
+}], "Input",
+ CellChangeTimes->{{3.5878226666515656`*^9, 3.5878226813115654`*^9}, {
+  3.623069600727178*^9, 3.623069642818178*^9}, {3.623073507695609*^9, 
+  3.6230735541132507`*^9}, {3.6230736005998983`*^9, 3.6230736057184105`*^9}},
+ Hyphenation->False,
+ AspectRatioFixed->True],
+
+Cell["N[Sqrt[2],50]", "Input",
+ Hyphenation->False,
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Sqrt", "[", "2", "]"}], " ", "//", " ", 
+  RowBox[{
+   RowBox[{"N", "[", 
+    RowBox[{"#", ",", "50"}], "]"}], "&"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "the", " ", "#", " ", "sign", " ", "indicates", " ", "the", " ", "use", 
+    " ", "of", " ", "the", " ", "previous", " ", "answer"}], " ", 
+   "*)"}]}]], "Input",
+ CellChangeTimes->{{3.5878227220265656`*^9, 3.5878227352145653`*^9}, {
+  3.5878231021905656`*^9, 3.587823164588566*^9}, {3.5878232446825657`*^9, 
+  3.5878232685405655`*^9}, {3.5878233484428406`*^9, 3.5878233962544007`*^9}},
+ Hyphenation->False,
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"list1", "=", 
+  RowBox[{"{", 
+   RowBox[{
+   "I", ",", " ", "\[Pi]", " ", ",", "E", ",", "Infinity", ",", "GoldenRatio",
+     ",", "EulerGamma", ",", "Catalan", ",", "Degree"}], "}"}], 
+  "  "}]], "Input",
+ CellChangeTimes->{{3.5878234137458982`*^9, 3.587823415800309*^9}},
+ Hyphenation->False],
+
+Cell["list1 ", "Input",
+ CellChangeTimes->{{3.623069756293178*^9, 3.623069756733178*^9}},
+ Hyphenation->False,
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"N", "[", "list1", "]"}]], "Input",
+ CellChangeTimes->{{3.623069750025178*^9, 3.623069754585178*^9}, {
+  3.6230737065084887`*^9, 3.6230737107769156`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", 
+  StyleBox["list1",
+   FontFamily->"Courier",
+   FontWeight->"Bold"], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"N", "[", "list1", "]"}], "  ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "notice", " ", "once", " ", "you", " ", "execute", " ", "this", " ", 
+     "line", " ", "list1", " ", "turns", " ", "blue", " ", "indicating", " ", 
+     "it", " ", "is", " ", "an", " ", "undefined", " ", "varible"}], ",", " ", 
+    RowBox[{"once", " ", "defined", " ", "it", " ", "turns", " ", "black"}]}],
+    " ", "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.623069774899178*^9, 3.623069789129178*^9}, {
+  3.623069824247178*^9, 3.623069863604178*^9}, {3.6230737928561225`*^9, 
+  3.6230737962004566`*^9}},
+ Hyphenation->False]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2. A Simple Calculation with Output and Plot", "Section",
+ CellChangeTimes->{{3.5878226132305655`*^9, 3.5878226134385653`*^9}, {
+  3.623074292636095*^9, 3.623074294967328*^9}},
+ FontFamily->"Times"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Consider the following problem. The radioactive decay of the element \
+thorium is given by the equation \n\n                                         \
+                  ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["N", "f"], TraditionalForm]]],
+ " = ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["N", "i"], TraditionalForm]]],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["e", 
+    RowBox[{"-", "\[Lambda]t"}]], TraditionalForm]]],
+ "\n\nwhere  \[Lambda] = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{"ln", " ", 
+     RowBox[{"2", " ", "/", " ", 
+      SubscriptBox["t", 
+       RowBox[{"1", "/", "2"}]]}]}]}], TraditionalForm]]],
+ ")  = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"1.14", "\[Times]", 
+    SuperscriptBox["10", 
+     RowBox[{"-", "8"}]]}], TraditionalForm]]],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["s", 
+    RowBox[{"-", "1"}]], TraditionalForm]]],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["N", "f"], TraditionalForm]]],
+ " is the number of remaining thorium nuclei, ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["N", "i"], TraditionalForm]]],
+ " is the initial number of thorium nuclei, t is the time elapsed, and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["t", 
+    RowBox[{"1", "/", "2"}]], TraditionalForm]]],
+ " is  the half-life of the thorium. When t=0, ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["N", "f"], TraditionalForm]]],
+ " is equal to ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["N", "0"], TraditionalForm]]],
+ " and no decay has occurred. As t increases the amount of thorium, ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["N", "f"], TraditionalForm]]],
+ " decreases. Below is a short code that calculates the amount of thorium \
+remaining after a given time. Execute the code and investigate the functions \
+of the different elements of the code. For example, what happens if you \
+remove the \";\" or the \"(*\" from one of the lines. Notice the use of \
+comments and variable names that make the code readable."
+}], "Text",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{
+  3.623068934800178*^9, {3.623070171378193*^9, 3.6230701801060658`*^9}},
+ TextAlignment->Left],
+
+Cell[BoxData[{
+ RowBox[{
+  StyleBox[
+   RowBox[{
+    RowBox[{"Ni", "=", " ", "1000.0"}], ";"}],
+   FontSize->14], 
+  StyleBox[" ",
+   FontSize->14], 
+  StyleBox[
+   RowBox[{"(*", " ", 
+    RowBox[{"Initial", " ", "Amount", " ", "in", " ", "kg"}], " ", "*)"}],
+   FontSize->14], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "notice", " ", "when", " ", "a", " ", "semicolon", " ", "is", " ", 
+    "present", " ", "at", " ", "the", " ", "end", " ", "of", " ", "a", " ", 
+    "command", " ", "the", " ", "command", " ", "is", " ", "evaluated", " ", 
+    "but", " ", "is", " ", "not", " ", "printed", " ", "to", " ", "the", " ", 
+    "screen"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"time", " ", "=", " ", "2000"}], ";"}], " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Decay", " ", "time", " ", "in", " ", 
+     RowBox[{"seconds", "."}]}], " ", "*)"}]}],
+  FontSize->14], "\n", 
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"lambda", " ", "=", " ", 
+     RowBox[{"1.14", "*", 
+      RowBox[{"10", "^", 
+       RowBox[{"(", 
+        RowBox[{"-", "8"}], ")"}]}]}]}], ";"}], " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Decay", " ", "constant", " ", "in", " ", 
+     RowBox[{"s", "^", 
+      RowBox[{"(", 
+       RowBox[{"-", "1"}], ")"}]}]}], " ", "*)"}]}],
+  FontSize->14], "\n", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"Nf", "=", " ", 
+    RowBox[{"Ni", "*", 
+     RowBox[{"Exp", "[", 
+      RowBox[{
+       RowBox[{"-", "lambda"}], "*", "time"}], "]"}]}]}], ";"}],
+  FontSize->14], "\n", 
+ RowBox[{
+  StyleBox[
+   RowBox[{"P", 
+    StyleBox["rint",
+     FontSize->14]}]], 
+  StyleBox["[",
+   FontSize->14], 
+  StyleBox[
+   RowBox[{"\"\<The amount left is \>\"", ",", "Nf", ",", "\"\< kg.\>\""}],
+   FontSize->14], 
+  StyleBox["]",
+   FontSize->14]}], "\n"}], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.587819934642209*^9, 3.587819972783023*^9}, {
+   3.587820653159054*^9, 3.58782066252999*^9}, {3.588420625860569*^9, 
+   3.588420626377569*^9}, {3.623068924509342*^9, 3.623068934800178*^9}, 
+   3.623073452937134*^9},
+ FontSize->12]
+}, Open  ]],
+
+Cell["\<\
+Next lets plot Nf as a function of time. Under Help: Wolfram Documentation is \
+a lot of information about all available functions.  You can also right click \
+on the function for help. After ploting use the help function to set the \
+y-axis from 0 to 1000 using PlotRange and change the color of the graph to \
+red using PlotStyle.  (I would recommend starting a special section of you \
+notebook with mathematica functions and what they do, start by including \
+PlotRange and PlotStyle)\
+\>", "Text",
+ CellChangeTimes->{{3.6230702485119057`*^9, 3.6230702788079348`*^9}, {
+  3.623071255089173*^9, 3.6230713100261726`*^9}, {3.623071369685173*^9, 
+  3.6230713801931725`*^9}, {3.6230714811861725`*^9, 3.623071520046173*^9}, {
+  3.6230745909391623`*^9, 3.6230745913331623`*^9}, {3.6230787665780907`*^9, 
+  3.623078777423091*^9}, {3.6235782765407076`*^9, 3.623578342206273*^9}}],
+
+Cell[BoxData[{
+ StyleBox[
+  RowBox[{"Clear", "[", 
+   RowBox[{"Ni", ",", " ", "lambda", ",", " ", "Nf", ",", " ", "time"}], "]"}],
+  FontSize->14], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   StyleBox[
+    RowBox[{"Ni", "=", " ", "1000.0"}],
+    FontSize->14], 
+   StyleBox[";",
+    FontSize->14], 
+   StyleBox[" ",
+    FontSize->14], 
+   StyleBox[
+    RowBox[{"(*", " ", 
+     RowBox[{"Initial", " ", "Amount", " ", "in", " ", "kg"}], " ", "*)"}],
+    FontSize->14], "\n", 
+   StyleBox[
+    RowBox[{"lambda", " ", "=", " ", 
+     RowBox[{"1.14", "*", 
+      RowBox[{"10", "^", 
+       RowBox[{"(", 
+        RowBox[{"-", "8"}], ")"}]}]}]}],
+    FontSize->14], 
+   StyleBox[";",
+    FontSize->14]}], 
+  StyleBox[" ",
+   FontSize->14], 
+  StyleBox[
+   RowBox[{"(*", " ", 
+    RowBox[{"Decay", " ", "constant", " ", "in", " ", 
+     RowBox[{"s", "^", 
+      RowBox[{"(", 
+       RowBox[{"-", "1"}], ")"}]}]}], " ", "*)"}],
+   FontSize->14]}], "\n", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"Nf", "=", " ", 
+    RowBox[{"Ni", "*", 
+     RowBox[{"Exp", "[", 
+      RowBox[{
+       RowBox[{"-", "lambda"}], "*", "time"}], "]"}]}]}], ";"}],
+  FontSize->14], "\[IndentingNewLine]", 
+ RowBox[{"Plot", "[", 
+  RowBox[{"Nf", ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"time", ",", " ", "0", ",", 
+     RowBox[{"10", "^", 
+      RowBox[{"(", "9", ")"}]}]}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6230713317781725`*^9, 3.623071357265173*^9}, {
+   3.6230713885771728`*^9, 3.623071460162173*^9}, {3.623071569912173*^9, 
+   3.6230715857221727`*^9}, 3.623078959728091*^9, {3.623577982309287*^9, 
+   3.623578021083164*^9}, 3.6235781376458197`*^9, {3.6235781832363777`*^9, 
+   3.6235782657226257`*^9}, 3.62357835107416*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["3. The Volume of a Hollow Ball", "Section",
+ CellChangeTimes->{{3.5878226160655656`*^9, 3.5878226163065653`*^9}},
+ FontFamily->"Times"],
+
+Cell["\<\
+Write a program to compute the volume of a ball. Use comments to label the \
+variable(s) and indicate units.   (you must begin with mathematica input)
+\
+\>", "Text",
+ CellChangeTimes->{{3.5878204223329735`*^9, 3.5878205760383425`*^9}, {
+   3.587820707094446*^9, 3.5878207078555226`*^9}, 3.5878207720319395`*^9, 
+   3.5878209542931643`*^9, {3.6230733507509165`*^9, 3.623073388313672*^9}, 
+   3.62307384973981*^9, {3.6230738917590113`*^9, 3.6230738983666725`*^9}, {
+   3.623078803155091*^9, 3.6230788037050905`*^9}}],
+
+Cell["\<\
+Write a program to compute the volume of the shell of a hollow ball. Clearly \
+show the user which quantities are to be entered.  \
+\>", "Text",
+ CellChangeTimes->{{3.5878207566103973`*^9, 3.5878207789826345`*^9}, 
+   3.587820936102345*^9}],
+
+Cell[BoxData[""], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["4. Plotting a list of numbers instead of a function", "Section",
+ CellChangeTimes->{{3.587822618527566*^9, 3.5878226187375655`*^9}, {
+  3.588439455993688*^9, 3.5884394575518436`*^9}, {3.623074301594991*^9, 
+  3.623074328513683*^9}},
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ "A ball is tossed from the top of the Gottwald Science Center. The height of \
+the ball, h, as a function of time, t, is\n\n                                 \
+                     ",
+ StyleBox["y(t)",
+  FontSlant->"Italic"],
+ " = -",
+ Cell[BoxData[
+  FormBox[
+   FractionBox["1", "2"], TraditionalForm]]],
+ "g",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["t", "2"], TraditionalForm]]],
+ " + ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "iy"], TraditionalForm]]],
+ "t + ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["y", "i"], TraditionalForm]]],
+ "\n\nwhere ",
+ StyleBox["g",
+  FontSlant->"Italic"],
+ " is the acceleration of gravity, ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "iy"], TraditionalForm]]],
+ " is the initial speed in the vertical direction, and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["y", "i"], TraditionalForm]]],
+ " is the height from which the ball is thrown. We want to make a plot of \
+this function when ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "iy"], TraditionalForm]]],
+ "=3.0 m/s and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["y", "i"], TraditionalForm]]],
+ " is 10.0 m. Execute the code and investigate the functions of the different \
+elements of the code. Note especially how functions are defined."
+}], "Text"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"viy", "=", "9.0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"yi", "=", "1.0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"grav", "=", "9.8"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"y", "[", "t_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "0.5"}], "*", "grav", "*", 
+     SuperscriptBox["t", "2"]}], "+", 
+    RowBox[{"viy", "*", "t"}], " ", "+", "yi"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"myfunc", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"t", ",", 
+       RowBox[{"y", "[", "t", "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "2", ",", "0.2"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", "myfunc", "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ListPlot", "[", 
+   RowBox[{"myfunc", ",", 
+    RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+    RowBox[{"AxesLabel", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"\"\<t(s)\>\"", ",", "\"\<y(t)\>\""}], "}"}]}], ",", " ", 
+    RowBox[{"LabelStyle", "\[Rule]", 
+     RowBox[{"(", 
+      RowBox[{"FontSize", "\[Rule]", "12"}], ")"}]}], ",", 
+    RowBox[{"PlotStyle", "\[Rule]", " ", 
+     RowBox[{"{", 
+      RowBox[{"Red", ",", " ", 
+       RowBox[{"Thickness", "[", "0.01", "]"}]}], "}"}]}]}], "]"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "you", " ", "may", " ", "want", " ", "to", " ", "add", " ", "ListPlot", 
+    " ", "and", " ", "what", " ", "it", " ", "does", " ", "to", " ", "your", 
+    " ", "notebook"}], " ", "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.406481444709194*^9, 3.4064815522226*^9}, {
+  3.587821187356468*^9, 3.5878211942121534`*^9}, {3.623074359922823*^9, 
+  3.6230743615709877`*^9}, {3.623077599035453*^9, 3.623077619339513*^9}, {
+  3.6230776756864386`*^9, 3.6230776967785473`*^9}, {3.623077804257294*^9, 
+  3.623077915504418*^9}, {3.6230786264320908`*^9, 3.623078664372091*^9}, {
+  3.6235783940494576`*^9, 3.623578415071559*^9}},
+ FontSize->12]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["5. Collision?", "Section",
+ CellChangeTimes->{{3.587822622397566*^9, 3.5878226225595655`*^9}, {
+  3.5884394642185106`*^9, 3.588439464982587*^9}, {3.598722833158001*^9, 
+  3.5987228430490007`*^9}, {3.5987234865560007`*^9, 3.598723489177001*^9}, {
+  3.598724588976322*^9, 3.5987245890753326`*^9}, {3.6230744367005005`*^9, 
+  3.6230744373945694`*^9}},
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ "A train pulls out of a station. It moves along the tracks following the \
+equation ",
+ StyleBox["s = 0.1 t^2",
+  FontWeight->"Bold"],
+ ", where ",
+ StyleBox["s",
+  FontWeight->"Bold"],
+ " is the distance along the track and ",
+ StyleBox["t",
+  FontWeight->"Bold"],
+ " is time.\nAnother train arrives at the station at high-speed and moves \
+along the track according to the equation",
+ StyleBox[" s = -4 + 0.2 t + 0.1t^2 -0.0002 t^3",
+  FontWeight->"Bold"],
+ ". The second train eventually comes to a stop and moves backwards.\n\nMake \
+a table of the of the position of the trains a 1s time intervals\nUse ",
+ StyleBox["ListPlot[\[Ellipsis]]",
+  FontWeight->"Bold"],
+ " to plot both tables and determine if the two trains collide.  \nHelpful \
+tip:  Wolfram Documentation under the Help menu will describe functions such \
+as Table, Plot and ListPlot, try searching Table and Plot to learn more\n     \
+                                              .\n                             \
+       "
+}], "Text",
+ CellChangeTimes->{{3.598722809027001*^9, 3.598722810309001*^9}, {
+  3.5987235034470005`*^9, 3.5987235101170006`*^9}, {3.5987235524000006`*^9, 
+  3.598723567219001*^9}, {3.598724623073732*^9, 3.5987246826556892`*^9}, {
+  3.5987247437657995`*^9, 3.5987247445648794`*^9}, {3.5987262408101215`*^9, 
+  3.598726261420182*^9}, {3.6230744890337334`*^9, 3.6230745472151623`*^9}, {
+  3.6230745977021627`*^9, 3.6230746818271627`*^9}, {3.6230750080921626`*^9, 
+  3.6230750445221624`*^9}, {3.623075100002476*^9, 3.623075132333709*^9}, {
+  3.6230751653990154`*^9, 3.6230751657760525`*^9}, {3.6230752095264273`*^9, 
+  3.6230752100954847`*^9}, {3.6230780090607724`*^9, 3.623078022768143*^9}, {
+  3.6230781543853035`*^9, 3.623078156867552*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"s1", "=", 
+   RowBox[{"0.1", "*", 
+    RowBox[{"t", "^", "2"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"table1", " ", "=", " ", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"t", ",", " ", "s1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", " ", "0", ",", "40", ",", "0.1"}], "}"}]}], "]"}]}], 
+   ";"}], " "}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.623074691228163*^9, 3.623074859193163*^9}, {
+   3.6230748996941624`*^9, 3.6230755192834*^9}, {3.623075666538124*^9, 
+   3.623075684406911*^9}, {3.6230775690134497`*^9, 3.623077569306508*^9}, {
+   3.623077927772644*^9, 3.623077957393606*^9}, 3.6230780473616023`*^9, {
+   3.6230781595078154`*^9, 3.6230782842322865`*^9}, {3.623078324536317*^9, 
+   3.6230783860264654`*^9}, {3.623078427969659*^9, 3.623078448830745*^9}, {
+   3.62307850169003*^9, 3.623078603451091*^9}, 3.623079049516091*^9}],
+
+Cell[TextData[{
+ "Create a new notebook with the  graph of the two trains that clearly shows \
+if they collide.  Make sure the axis are labeled and the font is large enough \
+to read (14 point minimum). Name the notebook either ",
+ StyleBox["collision",
+  FontWeight->"Bold"],
+ " if they collide ",
+ StyleBox["or nocollision ",
+  FontWeight->"Bold"],
+ "if they do not collide",
+ StyleBox[" and your name",
+  FontWeight->"Bold"],
+ "\nSubmit the graph to my netfiles (chelms)."
+}], "Text",
+ CellChangeTimes->{{3.623075542105682*^9, 3.623075657960266*^9}, {
+  3.6230779759094577`*^9, 3.62307799163503*^9}, {3.6230780775206175`*^9, 
+  3.623078138757741*^9}, {3.623078240328897*^9, 3.623078240467911*^9}, {
+  3.623079076227091*^9, 3.623079077708091*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1311, 727},
+WindowMargins->{{114, Automatic}, {18, Automatic}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+ShowSelection->True,
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 176, 7, 146, "Title"],
+Cell[746, 31, 819, 17, 68, "Text"],
+Cell[CellGroupData[{
+Cell[1590, 52, 398, 11, 64, "Section"],
+Cell[1991, 65, 927, 14, 68, "Text"],
+Cell[CellGroupData[{
+Cell[2943, 83, 504, 12, 49, "Subsection",
+ Evaluatable->False],
+Cell[3450, 97, 215, 7, 31, "Input"],
+Cell[3668, 106, 208, 7, 31, "Input"],
+Cell[3879, 115, 650, 13, 52, "Input"],
+Cell[4532, 130, 488, 10, 31, "Input"],
+Cell[5023, 142, 76, 2, 31, "Input"],
+Cell[5102, 146, 628, 15, 31, "Input"],
+Cell[5733, 163, 318, 8, 31, "Input"],
+Cell[6054, 173, 135, 3, 31, "Input"],
+Cell[6192, 178, 177, 3, 31, "Input"],
+Cell[6372, 183, 770, 18, 72, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7191, 207, 204, 3, 64, "Section"],
+Cell[CellGroupData[{
+Cell[7420, 214, 2185, 69, 168, "Text",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[9608, 285, 2097, 66, 152, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}]
+}, Open  ]],
+Cell[11720, 354, 884, 13, 68, "Text"],
+Cell[12607, 369, 1709, 54, 112, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14353, 428, 141, 2, 64, "Section"],
+Cell[14497, 432, 524, 9, 49, "Text"],
+Cell[15024, 443, 250, 5, 30, "Text"],
+Cell[15277, 450, 26, 0, 31, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15340, 455, 260, 4, 64, "Section"],
+Cell[15603, 461, 1285, 44, 140, "Text"],
+Cell[16891, 507, 2007, 51, 172, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18935, 563, 376, 6, 64, "Section"],
+Cell[19314, 571, 1751, 34, 182, "Text"],
+Cell[21068, 607, 965, 21, 72, "Input"],
+Cell[22036, 630, 749, 17, 68, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,257 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11421,        248]
+NotebookOptionsPosition[     11174,        235]
+NotebookOutlinePosition[     11520,        250]
+CellTagsIndexPosition[     11477,        247]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   GraphicsBox[{{}, {{}, 
+      {RGBColor[1, 0, 0], PointSize[0.005], AbsoluteThickness[1.6], 
+       PointBox[CompressedData["
+1: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
+oD91PfWXi/tF4U/qd+rDf/z3F4cGvMw=
+        "]]}, {}}, {}},
+    AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+    Axes->{True, True},
+    AxesLabel->{None, None},
+    AxesOrigin->{0, 0},
+    DisplayFunction->Identity,
+    Frame->{{True, True}, {True, True}},
+    FrameLabel->{{
+       FormBox[
+       "\"Mean Squared Distplacement (\\!\\(\\*SuperscriptBox[\\(m\\), \
+\\(2\\)]\\))\"", TraditionalForm], 
+       FormBox["\"\"", TraditionalForm]}, {
+       FormBox["\"Number of Steps\"", TraditionalForm], 
+       FormBox["\"\"", TraditionalForm]}},
+    FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+    GridLines->{None, None},
+    GridLinesStyle->Directive[
+      GrayLevel[0.5, 0.4]],
+    ImageSize->{675., Automatic},
+    LabelStyle->(FontSize -> 14),
+    Method->{},
+    PlotLabel->FormBox[
+     "\" Final position of 1000 random walks varying number of steps between \
+0 and 100 each\"", TraditionalForm],
+    PlotRange->{{0, 100.}, {0, 100.}},
+    PlotRangeClipping->True,
+    PlotRangePadding->{{
+       Scaled[0.02], 
+       Scaled[0.02]}, {
+       Scaled[0.02], 
+       Scaled[0.05]}},
+    Ticks->{Automatic, Automatic}], 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+      "The", " ", "mean", " ", "squared", " ", "displacement", " ", "is", " ",
+        "proportional", " ", "to", " ", "the", " ", "number", " ", "of", " ", 
+       "steps", " ", "taken", " ", "as", " ", "by", " ", "the", " ", 
+       "formula"}], " ", "<", 
+      SuperscriptBox["x", "2"], ">"}], " ", "=", " ", 
+     RowBox[{
+      RowBox[{"4", "*", "0.5", "*", "0.5", "*", "NumberOfSteps", "*", 
+       SuperscriptBox["1", "2"]}], " ", "=", 
+      RowBox[{
+       RowBox[{">", " ", "<", 
+        SuperscriptBox["x", "2"], ">"}], " ", "=", " ", 
+       RowBox[{"Constant", "*", " ", "NumberOfSteps"}]}]}]}], "*)"}], " ", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   GraphicsBox[{{}, {{}, 
+      {RGBColor[1, 0, 0], PointSize[0.005], AbsoluteThickness[1.6], 
+       PointBox[CompressedData["
+1:eJyV20+oXVcVBvDrH2jQgVqDlGKxfcaa1n9tX/LSxqa5776mSdu0ffnXJLVq
+kyKEDHQSydAzzsBOggNBSQmW0IkUHAlCnAg60AwclExECrUEiqIORBCkZ6/7
+Ar/vHI7eQS47+5599l57rW9969v73Xf2e0e/8+HZbPbeR2azD77b5+n5B//e
+uHNjvbW/3rc3999f7c2+PZu/UO15tb9W7Vm1f96+Z3v77/nrO6p/R/v/8/+a
+Dz+/u29fuXV3a18/1bd/9tbZ6j/W+re92Npdm897P9ms9vG+fe6N09V+vm9f
+fvVwPf/Z9r73/9K+rx/tvx/8/onqP9jWv2Nez89r/Ieq//F6/ovV/mpb38WP
+13xP9u1frZ2p/kfb7y/fV+27qv3n9t0d6b93vnW0+rF/t179j6wP/1772b6/
+b3eX/tP+f/Zc/7355tM13xN9+8d/ernGb+/f/vZy/9v7r1x9uNrNXt1vjo3M
+Z1H9qyPzeaZvz19/srXnbX/3/f3M8Prn7X13Hz9e/ftq/g+M2HOj/z63e0/1
+76z+D43Y40Bb3629w/MP/3mizf/il6qNf+uPMV/sN3uk2p+u/Xixb9/60bdr
+vMN9+xe/PVT2aOP/+57l+A+3+V/9VLX/tr/97rVaX4uH2flT9Xwb/6U93xp+
+f9fmd+2dpb1PlH1eqvahNt7l9eF4D39wffobv7/e4vuXvz9Z/U+1/nefWB9c
+T4zn/n+y5veHsscL/feNY8/V882ev/vckfr9kzX+oyP+LR76ubfe99f54Hz0
+966979wbj9V42+v9b88H292z/feu7QeH/XPe7LP3jtMj/rerxrtrGG+7Nr8L
+R84O77/7E/YFX43PWdvP7tK+en61jb/tM8P7EfPB/l3D6ws3C68dX/zo2nqu
+rb08HA9d849/Hnx+BL83ar5rw/2xn9hX/4341T7Gm+sTD/b37RvHvlLtbfX8
+r9t3+H+bz6WDtb/dgbLP48P2jXwJnmpf/VV/Dn9lfebf8Icvt3Hev2OEf5Cf
+Z6fb+u98dX3QHuKt+xn+D17E+8w/vL9r/rfz3aX/Lfr2tXd2DfOR4B/mI+Pv
+sXrf56t/rW93l+4Z9h/xpGt85sLNV0bwEfu4P92hai/q+T21nntH8pF8A/y6
+3vD45t5jI+vRn8Rr8+/Jms8rI+vRf+ULxG/4h/ELf414FY/ln/Cp6Ddf4M/B
+x/D/4A/az9+7HvlQ6z+3e2kP+EDkJ+oD83/gPfnD+kQ+E/5ovWN90+JhfvHZ
+4f0Mvm8+XNR6V4fnM3uofv+J/5EPNP+/cnWZHxuf/+MPnxm2Z9if9ck34yO+
+aY+VWt8/2u+CL4uH5jvWH3yBfCvfC7wnfubNXucfODoyvv4s3oqfzV7dpW/W
++PK5Vt8c/+6BEbyxXjSfgkezUzXfMyPzAU+D38h/5I/83nwa+3m4+pfP68/i
+qfGGfcP/xEP5F/Wj+XTe/P1jP13ikfW+7zPfkE8CX9Uv3B/1DurtyO98Qu9w
+fr4fPh/6h235DesLPjCBV4Gf5jvjzXgQr8H7iHfsIV8Pvig+wpeCTzB+6A+s
+N/DffKme436Yz/Qf8C3eJ/9Wf3A/5I/mX/FdvDH+4EPGX9gX/Jg9WON9dGS/
++ER+dL7ih/ut/ajXo56ifjKfun/hL8ar8yWfhz4lH5nA1+Dv2ks9x/23/nT+
+1pPqHdSPwc+MD9/P+PO23i/8YJkPzffWf9oL/hB4rT3UF6xn1YPEN+JD/w//
+wD5RD1rvaq8pPY7xoj5Q75C/Or77Z34WL+QL6svqS+Y/99P9dv+sz9j/2L8J
+/xOvQ78xH7L/ge/ES/A/+8Er8cf4iHgXb8Vv40E83qj37RnG5/Av9x/9I/io
+/JD9DH0A/IvzA+tX49P6U/3HetP63/pU/ZV6I/KJfA5+qn4RfFV/JZ9HfKnv
+26+95GfqxRN6jPOPeAMvQn+dON+K8T0fsB4yH9qmXgt/Nh7Vd+RT6r0rfXur
+Po7zBvUS9TbrffdPvJYfmL98nvgM/iVeYN/Qax3f81zxjngI+3jeq57jfsp/
+1UfNHytt/qP7I39w/eoz6hvUf5H/4YOT9Tb7GeeF5hvna74k3kM/Vd/TvxZt
+Plv1rHxmQo8IPsl6g6+v1HyXepP+Cp6FviG/td43/tTTne+i5rM6Yj/xWn2l
+Pb9lP+NjEh+Nf/HeeLC+mKg3Ip5bPtzc/9SwfwVfVz8kPqJeUM9Qf5BvMp/g
+A/p384c3X/tG2Vs8Z/zAA/iS+cL3e74W/my9an1o/Gq/Rdln17D9gr/rz+pT
+De9un5+bf7GfeubU+bHxG/zI8zHj13zleRPxG3zV8YxP8v3keR54o32CnxBv
+8qeIB/GKeA9934/8Tv47VZ/bL79Rr1YPFF8cD/+M/OX5nvqS8SW/EG+9T2W+
+le+Yn8VT+F/Ur8RX1KfUW8G/3Q/PD6wP5COOr/9OnG+EPdzfCX09+DXtOJ8x
+X1j/e34AnqoXh/6onoU9Qm+mfoz8MqVXyTeNn4n6T30h9tv90r+m+Ll6hXhi
+PrH+FV+9j0k8h54gfhuPU/r1oq1v676h61fPA18n7wvo//Jx9TP5kfWHern5
+j/0M+6pHqEfhb4GX4GPg5Up7/1Z+Vl/yfBN8jvt46uXgb9zHkc/KHzy/dv7W
+XxN6pvwu+Jn8xvNA7S9+gedxv039SP4An4n4lw/AN6Le0r/1V/VP+ZR6HfWh
++Tj4lPdXPL+znpN/eT4vfi369u16SnsT/7Hf1rfov5GvNmr9ayPrVX+0vnA/
+rbeth+Sv4FHkH+1FvRH4NXGfJ9ZnfIlf4q144n4bv57ve99CPgb+hX2t383H
+8g31WvMp+Uz8DLwwX6vfWk9ab5kPp+5rTOi/Ud+iN07eN1/U+KvD8zP/2I75
+wkeDT5v/9Vf5rvzW844JPJo8L/O8zX7zg/W+948m6s2If89f5XfyD/3Z+0z6
+m/jq+MaT9he/jFft5/1L62f2P/i4fFV7il+Ltv4t/zU+1efNf+K59Yb1r3jq
++ZjrEb/FK/cXPiZ/ivs/U+f12tP48TxHvqG/e/90oj6P+1zoNeqjkf+sB6x/
+1autf1b69jie419x/idfML/AF4P/iSfaz/sj4J31QthTfmr9qz+4/8aT/JdP
+8C3823wTfHJR813GK/4f9pJ/qV+o/2m/ifsKUd+rr2kP41c89rxLfzNfwN8j
+nvV39TbttVHvH/v7Fut760HfJ96xvohX87n2aPO7zbe8D+h9KO+7Wj8bP+7P
+1P147BX3d6yfrH/lU/CF4Ee+X7yXz7h+9Rj/PsD9mboPqt4oPqlfq6fi35E/
+9T/91fzufT/4beQn/95C//D8RX+e+Hvg/5fvx99jqZ96v0d92XymfuT5oX9P
+6X0j9TnjT/7o/R5/r95wO3/8F3aLbq8=
+        "]]}, {}}, {}},
+    AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+    Axes->{True, True},
+    AxesLabel->{None, None},
+    AxesOrigin->{0, 0},
+    DisplayFunction->Identity,
+    Frame->{{True, True}, {True, True}},
+    FrameLabel->{{
+       FormBox[
+       "\"Mean Squared Displacement (\\!\\(\\*SuperscriptBox[\\(m\\), \
+\\(2\\)]\\))\"", TraditionalForm], 
+       FormBox["\"\"", TraditionalForm]}, {
+       FormBox["\"Step Size (m)\"", TraditionalForm], 
+       FormBox["\"\"", TraditionalForm]}},
+    FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+    GridLines->{None, None},
+    GridLinesStyle->Directive[
+      GrayLevel[0.5, 0.4]],
+    ImageSize->{653., Automatic},
+    LabelStyle->(FontSize -> 14),
+    Method->{},
+    PlotLabel->FormBox[
+     "\" Final position of 1000 random walks varying number of steps between \
+25 and 50 each\"", TraditionalForm],
+    PlotRange->{{0, 100.}, {0, 1.*^7}},
+    PlotRangeClipping->True,
+    PlotRangePadding->{{
+       Scaled[0.02], 
+       Scaled[0.02]}, {
+       Scaled[0.02], 
+       Scaled[0.05]}},
+    Ticks->{Automatic, Automatic}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+      "The", " ", "mean", " ", "squared", " ", "displacement", " ", "is", " ",
+        "proportional", " ", "to", " ", "the", " ", "step", " ", "size", " ", 
+       "as", " ", "by", " ", "the", " ", "formula"}], " ", "<", 
+      SuperscriptBox["x", "2"], ">"}], " ", "=", " ", 
+     RowBox[{
+      RowBox[{"4", "*", "0.5", "*", "0.5", "*", "NumberOfSteps", "*", 
+       SuperscriptBox["stepSize", "2"]}], " ", "=", 
+      RowBox[{
+       RowBox[{">", " ", "<", 
+        SuperscriptBox["x", "2"], ">"}], " ", "=", " ", 
+       RowBox[{"Constant", " ", "*", " ", 
+        SuperscriptBox["stepSize", "2"]}]}]}]}], "*)"}], " "}]}]], "Input",
+ CellChangeTimes->{{3.633632718309603*^9, 3.6336327653869543`*^9}, {
+  3.6336330232862687`*^9, 3.633633033607596*^9}, {3.6336501482749586`*^9, 
+  3.63365020747788*^9}, {3.6336504126191444`*^9, 3.6336505055009165`*^9}, {
+  3.633650545667359*^9, 3.6336505768054075`*^9}, {3.633709405241232*^9, 
+  3.6337094055024123`*^9}, {3.6337096308788395`*^9, 3.633709631305131*^9}, {
+  3.6337096744116287`*^9, 3.633709822813588*^9}}]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (December 4, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 10612, 213, 1060, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

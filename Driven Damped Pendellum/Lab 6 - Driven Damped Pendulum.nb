@@ -1,0 +1,312 @@
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[         0,          0]
+NotebookDataLength[     11609,        311]
+NotebookOptionsPosition[     10334,        265]
+NotebookOutlinePosition[     11148,        291]
+CellTagsIndexPosition[     11105,        288]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Driven Damped Pendulum", "Title",
+ CellChangeTimes->{{3.6258347590366926`*^9, 3.6258347658373723`*^9}},
+ TextAlignment->Center,
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ "The equation describing the  physical pendulum can be written in terms of \
+torques as\n\n                                       ",
+ StyleBox["           \[Tau] = I\[Alpha] =  ",
+  FontSlant->"Italic"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "p"], " ", "r"}], TraditionalForm]]],
+ StyleBox["\n",
+  FontSlant->"Italic"],
+ "                                                \nwhere ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["F", "p"], TraditionalForm]]],
+ " is the perpendicular force acting on the pendulum, r is the moment arm, I \
+is the moment of inertia, and \[Alpha] is the angular acceleration ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["d", "2"], 
+    RowBox[{"\[Theta]", "/", 
+     StyleBox[
+      SuperscriptBox["dt", "2"],
+      FontSlant->"Italic"]}]}], TraditionalForm]]],
+ ". For a uniform rod of length ",
+ StyleBox["L",
+  FontSlant->"Italic"],
+ " pivoted at one end and swinging under the influence of gravity only one \
+obtains the following expression\n\n",
+ StyleBox["                                                I",
+  FontSlant->"Italic"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    StyleBox[
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["d", "2"], "\[Theta]"}], 
+      SuperscriptBox["dt", "2"]],
+     FontSlant->"Italic"], 
+    StyleBox[" ",
+     FontSlant->"Italic"], 
+    StyleBox["=",
+     FontSlant->"Italic"], 
+    StyleBox[" ",
+     FontSlant->"Italic"], 
+    RowBox[{
+     RowBox[{
+      StyleBox["(",
+       FontSlant->"Italic"], 
+      RowBox[{
+       StyleBox[
+        RowBox[{"-", "mg"}],
+        FontSlant->"Italic"], 
+       StyleBox[" ",
+        FontSlant->"Italic"], "sin\[Theta]"}], " ", ")"}], " ", 
+     SubscriptBox["r", "cm"], 
+     StyleBox[" ",
+      FontSlant->"Italic"]}]}], TraditionalForm]]],
+ "\n\nwhere ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["L", "cm"], TraditionalForm]]],
+ " is the length from the pivot on the end to the center of mass (CM) of the \
+pendulum, m is the mass, and  \[Theta] is the angle with respect to the \
+vertical. To make our model more realistic we will include torques caused by \
+friction and the existence of an outside 'driving' torque. This last torque \
+could be caused by a variety of sources (",
+ StyleBox["e.g.",
+  FontSlant->"Italic"],
+ ", gusts of wind, a varying electric field acting on a charged pendulum) and \
+will open up a rich array of interesting behavior in the system.\n\nThe \
+torque created by friction typically depends on the speed of the object \
+through a viscous medium. In the appropriate velocity range one finds this \
+torque can be treated as a force acting on the center of mass and can be \
+written as\n\n                                         ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Tau]", "f"], " ", "=", " ", 
+    RowBox[{
+     SubscriptBox["r", "cm"], 
+     StyleBox["(",
+      FontSlant->"Italic"], 
+     RowBox[{
+      RowBox[{"-", 
+       SubscriptBox["br", "cm"]}], 
+      StyleBox[
+       FractionBox[
+        StyleBox["d\[Theta]",
+         FontSlant->"Italic"], "dt"],
+       FontSlant->"Italic"]}], 
+     StyleBox[")",
+      FontSlant->"Italic"]}], 
+    StyleBox[" ",
+     FontSlant->"Italic"]}], TraditionalForm]]],
+ "\n                                         \nwhere ",
+ StyleBox["b",
+  FontSlant->"Italic"],
+ " is the drag coefficient detemined by the nature of the physical pendulum \
+and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["r", "cm"], TraditionalForm]]],
+ " is the pivot-CM distance of the pendulum. The minus sign is critical since \
+this torque must oppose the motion.\n\nWe now add a time-varying 'driving' \
+term which corresponds to some outside influence acting on the system. This \
+torque has the form\n\n                                       ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Tau]", "D"], " ", "=", " ", 
+    RowBox[{
+     SubscriptBox["r", "cm"], 
+     SubscriptBox[
+      StyleBox["F",
+       FontSlant->"Italic"], "D"], 
+     RowBox[{"sin", "(", 
+      StyleBox["\[CapitalOmega]t",
+       FontSlant->"Italic"], ")"}]}]}], TraditionalForm]]],
+ "\n                                       \n where  ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["F", "D"], TraditionalForm]]],
+ " is the amplitude of the force and \[CapitalOmega] is the angular frequency \
+of the driving force.\n \n"
+}], "Text",
+ CellChangeTimes->{{3.537554247674388*^9, 3.537554247985347*^9}, {
+  3.537554313874807*^9, 3.537554369332065*^9}, {3.5910296587676935`*^9, 
+  3.591029659322749*^9}, {3.625835229363926*^9, 3.625835229764926*^9}, {
+  3.625835331969926*^9, 3.625835364605926*^9}, {3.626523733557047*^9, 
+  3.62652373368606*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell["1. Solving the Equation", "Section",
+ CellChangeTimes->{{3.625835378520926*^9, 3.625835378960926*^9}},
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ "Write a code using the Euler-Cromer algorithm that will solve the model of \
+the physical pendulum. The pendulum is a uniform rod that is pivoted at one \
+end. The following inital conditions and parameters apply.\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["t", "0"], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"0.0", " ", "s", "                ", 
+      SubscriptBox["\[Theta]", "0"]}], " ", "=", " ", 
+     RowBox[{
+      RowBox[{"1", " ", "rad", "  ", 
+       RowBox[{"(", 
+        SuperscriptBox["57", "o"], ")"}], "          ", 
+       SubscriptBox["\[Omega]", "0"]}], " ", "=", " ", 
+      RowBox[{"0.0", " ", 
+       RowBox[{"rad", "/", "s"}]}]}]}]}], TraditionalForm]]],
+ "\n\nLength of pendulum:  30 m (it's big)\nDrag coefficient: 1 kg/s\nMass of \
+pendulum: 30 kg\nDriving force: 100 N\nAngular frequency of driving force: \
+0.66 rad/s\n\nIntegration step size: 0.01 s\n\nYou will need to look up the \
+moment of inertia for a rod rotating about its end.  If necessary use the ",
+ ButtonBox["parallel axis theorem",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://hyperphysics.phy-astr.gsu.edu/hbase/parax.html"], None},
+  ButtonNote->"http://hyperphysics.phy-astr.gsu.edu/hbase/parax.html"],
+ " which states I = ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["I", "cm"], TraditionalForm]]],
+ " + M",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["d", "2"], TraditionalForm]]]
+}], "Text",
+ CellChangeTimes->{{3.5380478227634077`*^9, 3.5380478230560226`*^9}, {
+  3.591452754603695*^9, 3.591452758669695*^9}, {3.5999388109161654`*^9, 
+  3.599938819777022*^9}, {3.599942642094387*^9, 3.5999426451364064`*^9}, {
+  3.6000291499807587`*^9, 3.600029154688759*^9}, {3.600029187686759*^9, 
+  3.600029187686759*^9}, {3.600029244794759*^9, 3.600029276321759*^9}, {
+  3.6258353901229258`*^9, 3.625835391108926*^9}, {3.625835433882926*^9, 
+  3.6258355651289263`*^9}, {3.625835725933926*^9, 3.625835725934926*^9}, {
+  3.6258548135442157`*^9, 3.625854814059061*^9}, {3.6258548487296567`*^9, 
+  3.6258548498183303`*^9}, {3.626523526912385*^9, 3.6265235412488184`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2. Testing the Code", "Section",
+ CellChangeTimes->{3.625835761576926*^9},
+ FontFamily->"Times"],
+
+Cell["\<\
+Test your code by generating a plot of angular position \[Theta] with respect \
+to time. If you set the driving force and the drag coefficient to zero you \
+should recover the behavior of the simple physical pendulum. Check that the \
+amplitude you observe is consistent with the initial conditions for a simple \
+physical pendulum. Next, turn on the drag coefficient. What do expect the \
+pendulum to do? Does your code reproduce this behavior?\
+\>", "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["3. Investigating the Physics", "Section",
+ CellChangeTimes->{{3.625837907148716*^9, 3.625837907633716*^9}},
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ "Once you have a working code consider the following questions.\n\na. The \
+simple pendulum is an isolated system so the energy of the pendulum should \
+remain constant at all times.  What is the equation for the energy of the \
+pendulum at any time?\nOnce again set the driving force and the drag \
+coefficient to zero.  Add a list to your code which stores {time, energy} and \
+plot the data.  Is energy conserved using the Euler-Cromer algorithm?\n\nb. \
+With drag and drive turned on, investigate the behavior of the pendulum at \
+different time regimes by ploting the time vs position from t = 0 s to t = \
+800 s.  What is the pendulums initial behavior (between t = 0 and t = 200 s). \
+ Does the behavior change at later times (t = 600 to t = 900)? (you may want \
+to increase the step size to 0.02)\nThe initial behavior is said to be \
+trasient before the pendulum settles into its steady state behavior.  How \
+does the value of the drag coefficient effect the lengh of the trasient \
+behavior? \n\n",
+ StyleBox["(place you graph and answer to 3.b in chelms netfiles)",
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0.5, 0]],
+ "\n\n"
+}], "Text",
+ CellChangeTimes->{{3.537785982896051*^9, 3.537786004518146*^9}, {
+  3.538047542937085*^9, 3.5380475470523357`*^9}, {3.5999388549240475`*^9, 
+  3.5999388608988857`*^9}, {3.600029194589759*^9, 3.600029196316759*^9}, {
+  3.600029237979759*^9, 3.600029239672759*^9}, {3.600029280434759*^9, 
+  3.600029280883759*^9}, {3.625835786486926*^9, 3.625835808230798*^9}, {
+  3.6258358407210464`*^9, 3.6258359336133347`*^9}, {3.6258361229892707`*^9, 
+  3.6258361264826202`*^9}, {3.625836178011772*^9, 3.6258362372246933`*^9}, {
+  3.625837984728716*^9, 3.6258382537187157`*^9}, {3.6258548754026527`*^9, 
+  3.625854893711173*^9}, {3.626539529265544*^9, 3.6265395354795437`*^9}, {
+  3.626539945859544*^9, 3.626539993607544*^9}, {3.629813646966114*^9, 
+  3.6298136659310107`*^9}, {3.6298137357579927`*^9, 3.6298137893883553`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1322, 718},
+WindowMargins->{{79, Automatic}, {Automatic, 20}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]], 
+   Cell[
+    StyleData["Text"], FontFamily -> "Times New Roman", FontSize -> 14, 
+    FontWeight -> "Plain", FontSlant -> "Plain", 
+    FontVariations -> {"StrikeThrough" -> False, "Underline" -> False}]}, 
+  Visible -> False, FrontEndVersion -> 
+  "10.0 for Microsoft Windows (64-bit) (July 1, 2014)", StyleDefinitions -> 
+  "PrivateStylesheetFormatting.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[422, 15, 155, 3, 91, "Title"],
+Cell[580, 20, 4692, 134, 556, "Text"],
+Cell[CellGroupData[{
+Cell[5297, 158, 130, 2, 64, "Section"],
+Cell[5430, 162, 2104, 44, 274, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7571, 211, 102, 2, 64, "Section"],
+Cell[7676, 215, 469, 7, 68, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8182, 227, 135, 2, 64, "Section"],
+Cell[8320, 231, 1986, 30, 240, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,334 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     11832,        325]
+NotebookOptionsPosition[     11154,        297]
+NotebookOutlinePosition[     11551,        314]
+CellTagsIndexPosition[     11508,        311]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Damped 
+Physical Pendulum\
+\>", "Title",
+ CellChangeTimes->{{3.6265504710135436`*^9, 3.626550498036544*^9}},
+ TextAlignment->Center,
+ FontFamily->"Times"],
+
+Cell["\<\
+In the laboratory we will investigate more of the behavior of the damped, \
+non-linear, physical pendulum that was developed in the previous laboratory.\
+\>", "Text",
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell["1. The Model.", "Section",
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ "The equation describing the physical pendulum can be written in terms of \
+torques as\n\n                        ",
+ StyleBox["        ",
+  FontSlant->"Italic"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Tau]", "total"], TraditionalForm]]],
+ StyleBox[" = I\[Alpha] =  ",
+  FontSlant->"Italic"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Tau]", "gravity"], " ", "+", " ", 
+    SubscriptBox["\[Tau]", "friction"], " ", "+", " ", 
+    SubscriptBox["\[Tau]", "drive"]}], TraditionalForm]]],
+ StyleBox["\n",
+  FontSlant->"Italic"],
+ "                                                \nwhere ",
+ StyleBox["I",
+  FontSlant->"Italic"],
+ " is the moment of inertia, and \[Alpha] is the angular acceleration. The \
+components of the total torque are summarized below.\n\n",
+ StyleBox["                                              ",
+  FontSlant->"Italic"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Tau]", "gravity"], " ", "="}], " "}], 
+   TraditionalForm]]],
+ StyleBox["  ",
+  FontSlant->"Italic"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    StyleBox[" ",
+     FontSlant->"Italic"], 
+    RowBox[{
+     RowBox[{
+      StyleBox["(",
+       FontSlant->"Italic"], 
+      RowBox[{
+       StyleBox[
+        RowBox[{"-", "mg"}],
+        FontSlant->"Italic"], 
+       StyleBox[" ",
+        FontSlant->"Italic"], "sin\[Theta]"}], " ", ")"}], " ", 
+     SubscriptBox["r", "cm"], 
+     StyleBox[" ",
+      FontSlant->"Italic"]}]}], TraditionalForm]]],
+ "\n                                              \n                          \
+             ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Tau]", "friction"], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["br", "cm"], 
+        StyleBox[
+         FractionBox["d\[Theta]", "dt"],
+         FontSlant->"Italic"]}], 
+       StyleBox[")",
+        FontSlant->"Italic"]}]}], 
+     StyleBox[" ",
+      FontSlant->"Italic"], 
+     SubscriptBox["r", "cm"]}]}], TraditionalForm]]],
+ "\n                                       \n                                 \
+      ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Tau]", "drive"], " ", "=", " ", 
+    RowBox[{
+     SubscriptBox["r", "cm"], 
+     SubscriptBox[
+      StyleBox["F",
+       FontSlant->"Italic"], "D"], 
+     RowBox[{"sin", "(", 
+      StyleBox["\[CapitalOmega]t",
+       FontSlant->"Italic"], ")"}]}]}], TraditionalForm]]],
+ "\n\nIn the first expression in this list ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["r", "cm"], TraditionalForm]]],
+ " is the distance from the pivot to the center of mass, ",
+ StyleBox["m",
+  FontSlant->"Italic"],
+ " is the mass, and  \[Theta] is the angle with respect to the vertical. In \
+the second formula ",
+ StyleBox["b",
+  FontSlant->"Italic"],
+ " is the drag coefficient detemined by the nature of the physical pendulum. \
+The minus sign here is critical since this torque must oppose the motion. For \
+the driving term, the last in the list,   ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["F", "D"], TraditionalForm]]],
+ " is the amplitude of the force and \[CapitalOmega] is the angular frequency \
+of the driving force.\n\nThe pendulum is a uniform cylinder that is pivoted \
+at one end. The following inital conditions and parameters apply.\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["t", "0"], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"0.0", " ", "s", "                ", 
+      SubscriptBox["\[Theta]", "0"]}], " ", "=", " ", 
+     RowBox[{
+      RowBox[{"1", " ", "rad", "               ", 
+       SubscriptBox["\[Omega]", "0"]}], " ", "=", " ", 
+      RowBox[{"0.0", " ", 
+       RowBox[{"rad", "/", "s"}]}]}]}]}], TraditionalForm]]],
+ "\n\nLength of pendulum:  30 m (it's big)\nDrag coefficient: 1 kg/s\nMass of \
+pendulum: 30 kg\nDriving force amplitude: 100 N\nAngular frequency of driving \
+force: 0.66 rad/s\n\nIntegration step size: 0.01 s"
+}], "Text",
+ CellChangeTimes->{{3.538047719041957*^9, 3.538047771926115*^9}, {
+  3.538047841026568*^9, 3.538047870242195*^9}, {3.599938307833984*^9, 
+  3.599938346465847*^9}, {3.599942769560607*^9, 3.599942772051856*^9}, {
+  3.601738489827819*^9, 3.6017384901818542`*^9}, {3.6017388912179537`*^9, 
+  3.6017388916619987`*^9}, {3.6017389244232745`*^9, 3.601738931144946*^9}, {
+  3.6017390120940404`*^9, 3.6017390379146223`*^9}, {3.6017451919500103`*^9, 
+  3.6017451963784533`*^9}, {3.625833805626361*^9, 3.625833824282226*^9}, {
+  3.6265237065393457`*^9, 3.6265237094066324`*^9}, {3.626523743112003*^9, 
+  3.626523743444036*^9}, {3.6265238444061313`*^9, 3.626523867544445*^9}},
+ FontSize->14]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2. Phase-Space", "Section",
+ CellChangeTimes->{{3.626523890681758*^9, 3.62652389080377*^9}, {
+  3.6265483161885433`*^9, 3.6265483192565436`*^9}},
+ FontFamily->"Times"],
+
+Cell["\<\
+Using your code for the pendulum you developed in lab 6 answer the following \
+questions.  Unless specified set the drag coefficient and drive force to zero.
+
+a. Modify your code to produce a phase-space portrait of the trajectory. What \
+do you expect this figure to look like for the simple physical pendulum?  \
+Turn off the drag and driving force and plot the the phase-space portrait to \
+verify. (name the output list a particular name so you can refer to it later, \
+for example v0=listname.  If this is unclear ask Professor Helms)
+
+
+b. Change the initial angular velocity to 1.  Compare this plot to the one in \
+above. again give a particular name to your results for v1 and v2)
+Now change the initial velocity to 2. Once again compare the plots (but see \
+part c).
+
+c. An unrealistic feature of the plots above is that they do not consider \
+that the pendulum can only swing through a range of angles of -\[Pi] to \
+\[Pi]. The example below demonstrates how one could correct for this. \
+Applying this correction to your algorithm once again change the initial \
+velocity to 2 and compare with the results above. \
+\>", "Text",
+ CellChangeTimes->{{3.537785982896051*^9, 3.537786004518146*^9}, {
+   3.538047542937085*^9, 3.5380475470523357`*^9}, {3.5999388549240475`*^9, 
+   3.5999388608988857`*^9}, {3.600029194589759*^9, 3.600029196316759*^9}, {
+   3.600029237979759*^9, 3.600029239672759*^9}, {3.600029280434759*^9, 
+   3.600029280883759*^9}, {3.6265238968123713`*^9, 3.626523925856275*^9}, {
+   3.626523955876277*^9, 3.626524130171705*^9}, {3.626538792015544*^9, 
+   3.6265388590415435`*^9}, {3.6265390086905437`*^9, 3.626539068135544*^9}, {
+   3.6265409256345434`*^9, 3.626540979793544*^9}, {3.6265476927735434`*^9, 
+   3.6265476996815434`*^9}, {3.6265477661455436`*^9, 3.6265478400055437`*^9}, 
+   3.6265483233015437`*^9, {3.6265484267355433`*^9, 3.6265484347565436`*^9}, {
+   3.6265508141575437`*^9, 3.6265508934695435`*^9}, {3.626551168484544*^9, 
+   3.6265511792495437`*^9}, {3.6265512260685434`*^9, 
+   3.6265512524865437`*^9}, {3.626551510050544*^9, 3.6265516193515434`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"tmin", "=", "0."}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"tmax", "=", "5.0"}], ";"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"tstep", "=", "0.1"}], ";"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"angle", "[", "t_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"0.5", "*", 
+      SuperscriptBox["t", "2"]}], "-", "4"}]}], ";"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t1", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"t", ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"theta", "=", 
+         RowBox[{"angle", "[", "t", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"angle", "[", "t", "]"}], ">", "\[Pi]"}], ",", 
+          RowBox[{"theta", "=", 
+           RowBox[{
+            RowBox[{"angle", "[", "t", "]"}], "-", 
+            RowBox[{"2", "*", "Pi"}]}]}]}], "]"}], ";", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"angle", "[", "t", "]"}], "<", 
+           RowBox[{"-", "\[Pi]"}]}], ",", 
+          RowBox[{"theta", "=", 
+           RowBox[{
+            RowBox[{"angle", "[", "t", "]"}], "+", 
+            RowBox[{"2", "*", "Pi"}]}]}]}], "]"}], ";", "\[IndentingNewLine]",
+         "theta"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "tmin", ",", "tmax", ",", "tstep"}], "}"}]}], "]"}]}],
+   ";", " ", 
+  RowBox[{"ListPlot", "[", 
+   RowBox[{"t1", ",", 
+    RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+    RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+    RowBox[{"FrameLabel", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<t\>\"", ",", "\"\<Angle\>\"", ",", "\"\<\>\"", ",", "\"\<\>\""}], 
+      "}"}]}]}], "]"}]}]}], "Input"],
+
+Cell[TextData[{
+ "\nd. Graph parts a-c above on the same graph along with 3 other initial \
+velocities.\n\ne. Turn on drag only and plot a phase-space portrait.  Are the \
+results as expected?  How does your plot differ? What information could you \
+extract from the phase-space portrait of the pendulum?\n\n",
+ StyleBox["(place the graph and answer from 2.e in chelms netfiles)",
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0.5, 0]],
+ "\n\n\n"
+}], "Text",
+ CellChangeTimes->{{3.537785982896051*^9, 3.537786004518146*^9}, {
+  3.538047542937085*^9, 3.5380475470523357`*^9}, {3.5999388549240475`*^9, 
+  3.5999388608988857`*^9}, {3.600029194589759*^9, 3.600029196316759*^9}, {
+  3.600029237979759*^9, 3.600029239672759*^9}, {3.600029280434759*^9, 
+  3.600029280883759*^9}, {3.6265238968123713`*^9, 3.626523925856275*^9}, {
+  3.626523955876277*^9, 3.626524130171705*^9}, {3.626538792015544*^9, 
+  3.6265388590415435`*^9}, {3.6265390086905437`*^9, 3.626539068135544*^9}, {
+  3.6265409256345434`*^9, 3.626540979793544*^9}, {3.6265476927735434`*^9, 
+  3.6265476996815434`*^9}, {3.6265477661455436`*^9, 3.6265478588375435`*^9}, {
+  3.6265484393305435`*^9, 3.6265484402695436`*^9}, {3.6265512608345437`*^9, 
+  3.6265513120025434`*^9}, {3.62981521787319*^9, 3.629815246773079*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1033, 628},
+WindowMargins->{{157, Automatic}, {Automatic, 65}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 164, 6, 146, "Title"],
+Cell[734, 30, 191, 4, 49, "Text"],
+Cell[CellGroupData[{
+Cell[950, 38, 54, 1, 64, "Section"],
+Cell[1007, 41, 4641, 129, 559, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5685, 175, 173, 3, 64, "Section"],
+Cell[5861, 180, 2106, 34, 277, "Text"],
+Cell[7970, 216, 1879, 55, 192, "Input"],
+Cell[9852, 273, 1274, 20, 201, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

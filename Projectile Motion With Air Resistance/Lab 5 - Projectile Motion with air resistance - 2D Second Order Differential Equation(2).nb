@@ -1,0 +1,254 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9474,        245]
+NotebookOptionsPosition[      8718,        214]
+NotebookOutlinePosition[      9060,        229]
+CellTagsIndexPosition[      9017,        226]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["2D motion: Projectile motion with air resistance", "Title",
+ CellChangeTimes->{{3.5926731354732294`*^9, 3.592673144101229*^9}, {
+  3.6240276506686983`*^9, 3.6240276574266977`*^9}, {3.624198936804774*^9, 
+  3.6241989583647738`*^9}},
+ TextAlignment->Center,
+ FontFamily->"Times"],
+
+Cell["\<\
+In this laboratory we will explore motion in 2D.  Specifically we will look \
+at the flight of a baseball including air resistance.  
+(* However we are ignoring the effects of spin on the flight of the ball. *)\
+\>", "Text",
+ CellChangeTimes->{{3.6241990468597736`*^9, 3.6241990606617737`*^9}, {
+  3.624199116155774*^9, 3.6241991703387737`*^9}, {3.6241992006687737`*^9, 
+  3.624199236126774*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell["1. Round-Off Error.", "Section",
+ CellChangeTimes->{{3.589633185592229*^9, 3.5896331857612457`*^9}, {
+  3.5993057138542757`*^9, 3.599305731409276*^9}, {3.6242101329897895`*^9, 
+  3.624210135961681*^9}},
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ "There are limits to the accuracy of any computation done on a machine. This \
+limit is important when you are differentiating because you may have to take \
+the difference between two large numbers. One of the standard tests of \
+computer accuracy is to calculate the sum ",
+ StyleBox["S=x+1.0-x ",
+  FontSlant->"Italic"],
+ "where x is some large number. Calculate ",
+ StyleBox["S",
+  FontSlant->"Italic"],
+ " for different values of ",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ " and find the limit of accuracy on your machine.\n\nDoes using S=x+1-x \
+instead of ",
+ StyleBox["S=x+1.0-x",
+  FontSlant->"Italic"],
+ " improve your results?\n"
+}], "Text",
+ CellChangeTimes->{
+  3.589217160962491*^9, {3.6242104175914793`*^9, 3.6242104964692516`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "2. Drop Function",
+ StyleBox["\n\t", "Text"],
+ StyleBox["Use the List below to explore the Drop function in mathematica", 
+  "Text",
+  FontColor->GrayLevel[0]]
+}], "Section",
+ CellChangeTimes->{{3.624027740552698*^9, 3.6240277412936983`*^9}, {
+  3.624040997389191*^9, 3.624040998435191*^9}, {3.6241974173646235`*^9, 
+  3.6241974244113283`*^9}, {3.6241995096807737`*^9, 3.624199556089774*^9}, {
+  3.6242101384144163`*^9, 3.624210138613476*^9}},
+ FontFamily->"Times"],
+
+Cell[BoxData[
+ RowBox[{"test", "=", " ", 
+  RowBox[{"List", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"11", ",", "12", ",", "13"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"21", ",", "22", ",", "23"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"31", ",", "32", ",", "33"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"41", ",", "42", ",", "43"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"51", ",", "52", ",", "53"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.624196350531396*^9, 3.624196389291396*^9}, {
+  3.6241965421366024`*^9, 3.6241965546966424`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"test2", " ", "=", 
+   RowBox[{"Drop", "[", 
+    RowBox[{"test", ",", " ", "None", ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "2"}], "}"}]}], "]"}]}], ";", " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Drop", " ", "no", " ", "rows", " ", "and", " ", "second", " ", "column"}],
+    " ", "*)"}], "\[IndentingNewLine]", "test2"}]], "Input",
+ CellChangeTimes->{{3.624196402147396*^9, 3.624196436709396*^9}, {
+  3.6241965300899725`*^9, 3.6241965309786835`*^9}, {3.6241965741321783`*^9, 
+  3.6241965820995474`*^9}, {3.6241967499267015`*^9, 3.6241968820057364`*^9}, {
+  3.6241969173093243`*^9, 3.6241969220957594`*^9}, {3.624196958749752*^9, 
+  3.624196980870386*^9}, {3.624197141264016*^9, 3.6241971551734076`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"test3", "=", 
+    RowBox[{"Drop", "[", 
+     RowBox[{"test", ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "3"}], "}"}], ",", "None"}], "]"}]}], ";"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "drop", " ", "rows", " ", "1", " ", "to", " ", "3", " ", "and", " ", "no", 
+    " ", "columns"}], " ", "*)"}]}], "\[IndentingNewLine]", "test3"}], "Input",
+ CellChangeTimes->{{3.6241968116716423`*^9, 3.6241968294259667`*^9}, {
+  3.624197097219612*^9, 3.6241970995678473`*^9}, {3.624197157619652*^9, 
+  3.6241971708069706`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"test4", "=", 
+   RowBox[{"Drop", "[", 
+    RowBox[{"test", ",", " ", "None", ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2"}], "}"}]}], "]"}]}], ";", " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "drop", " ", "no", " ", "rows", " ", "and", " ", "columns", " ", "1", " ", 
+    "to", " ", "2"}], " ", "*)"}], "\[IndentingNewLine]", "test4"}]], "Input",
+ CellChangeTimes->{{3.6241971130611963`*^9, 3.624197128478738*^9}, {
+  3.6241971733582253`*^9, 3.624197185076397*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["3. Projectile Motion with Air Resistance", "Section",
+ CellChangeTimes->{{3.624027740552698*^9, 3.6240277412936983`*^9}, {
+  3.624040997389191*^9, 3.624040998435191*^9}, {3.6241974173646235`*^9, 
+  3.6241974244113283`*^9}, {3.6242101409221687`*^9, 3.6242101411362324`*^9}},
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ "A baseball hit from a major league pitcher can leave the bat with speeds of \
+more than 100 mph.  Determine the trajectory for a baseball leaving a bat \
+with an inital angle 30\[Degree] (you will want to work in radians, remember \
+2\[Pi] rad = 360\[Degree]) and an initial velocity 150 m/",
+ Cell[BoxData[
+  FormBox["s", TraditionalForm]]],
+ " (this is a little large but it helps with visualization of the effect of \
+drag). The initial position of the ball is x = 0 and y = 1 m. \n\nOur model \
+of the drag force acting on a body as it falls through a resistive medium \
+(like air) is given by the following expression.\n\n                          \
+             ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "f"], " ", "=", " ", 
+    RowBox[{
+     FractionBox["1", "2"], " ", "\[Rho]", " ", "C", " ", "A", " ", "v", " ", 
+     OverscriptBox["v", "\[RightVector]"]}]}], TraditionalForm]]],
+ "                 (for a baseball C = 0.3 and the radius of the ball is 3.5 \
+cm)\n                                       \n                      \n\na. \
+What are the recursive equations needed to solve this problem?\n\nb. What \
+initial condidtions are needed to start this problem?\n\nc. Write a code that \
+will solve this problem.  Keep all data.  Your data list should include {t, \
+x, y, vx, vy, v}  \n\tWhen is the total velocity a maximum? When is the total \
+velocity a minimum? \n\tWhy does the maximum and minimum occur at these \
+points?\n\nd. Using the Drop function plot x vs y with air resistance along \
+with the analytical result without air resistance. \n\ne. You may recall that \
+when air resistance is neglected the maximum range is attained for a launch \
+angle of 45 degrees.  Use your model to determine the new angle at which the \
+maximum range occurs.  Make a graph of the trajectory for this angle.  Is it \
+greater or smaller than 45 degrees?\n\n\n",
+ StyleBox["(place parts 3.d and 3.e in chelms netfiles)",
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0.5, 0]],
+ "\n\n\n"
+}], "Text",
+ CellChangeTimes->{{3.406980636840143*^9, 3.406980655936757*^9}, {
+   3.411690882847899*^9, 3.411690883436795*^9}, {3.6240410465511913`*^9, 
+   3.6240410559901915`*^9}, {3.624041087067191*^9, 3.624041098435191*^9}, {
+   3.624041148059191*^9, 3.624041153501191*^9}, {3.624197434138301*^9, 
+   3.624197498588745*^9}, {3.624197556213507*^9, 3.62419759334722*^9}, {
+   3.624197655013386*^9, 3.6241978171017737`*^9}, {3.624197892860774*^9, 
+   3.624197991782774*^9}, {3.624198041662774*^9, 3.624198071929774*^9}, {
+   3.624198104074774*^9, 3.624198171952774*^9}, {3.6241982513327737`*^9, 
+   3.6241984574207735`*^9}, {3.6241986509797735`*^9, 
+   3.6241986590127735`*^9}, {3.6241987448667736`*^9, 
+   3.6241987686877737`*^9}, {3.624198798994774*^9, 3.6241988952067738`*^9}, {
+   3.6298085806985383`*^9, 3.629808582673736*^9}, {3.629808648573325*^9, 
+   3.629808666790147*^9}, 3.6298107195263996`*^9, 3.629811020511495*^9, {
+   3.6298111374281855`*^9, 3.6298111976202044`*^9}, {3.6298118643488703`*^9, 
+   3.629811866916127*^9}},
+ TextAlignment->Left]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{923, 738},
+WindowMargins->{{163, Automatic}, {Automatic, 30}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 283, 5, 91, "Title"],
+Cell[866, 29, 421, 8, 49, "Text"],
+Cell[CellGroupData[{
+Cell[1312, 41, 230, 4, 64, "Section"],
+Cell[1545, 47, 764, 20, 144, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2346, 72, 483, 11, 83, "Section"],
+Cell[2832, 85, 581, 15, 31, "Input"],
+Cell[3416, 102, 747, 15, 52, "Input"],
+Cell[4166, 119, 580, 14, 52, "Input"],
+Cell[4749, 135, 507, 12, 52, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5293, 152, 301, 4, 64, "Section"],
+Cell[5597, 158, 3093, 52, 593, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

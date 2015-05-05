@@ -1,0 +1,615 @@
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[         0,          0]
+NotebookDataLength[     26899,        614]
+NotebookOptionsPosition[     24574,        535]
+NotebookOutlinePosition[     26168,        585]
+CellTagsIndexPosition[     26125,        582]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Intro to Gluon", "Title",
+ CellChangeTimes->{{3.538321630021449*^9, 3.538321633965002*^9}, {
+  3.5383520716222973`*^9, 3.538352071963242*^9}, {3.538479967138732*^9, 
+  3.5384799758837*^9}, {3.538612595146798*^9, 3.538612597872167*^9}, {
+  3.62791817344398*^9, 3.62791817992698*^9}},
+ TextAlignment->Center,
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ "Many problems in physics and other fields like biology, medicine, ",
+ StyleBox["etc",
+  FontSlant->"Italic"],
+ " can be solved using computational methods, but require prodigious \
+computing resources. In this laboratory you will be introduced to the use of \
+a high-performance computing (HPC) cluster. You will be solving the problem \
+developed in the previous laboratory (",
+ StyleBox["Shooting the Sun",
+  FontSlant->"Italic"],
+ ") using a Monte Carlo method to explore the range of parameters for \
+successfully launching a projectile into the Sun. The HPC cluster is a \
+research-quality, linux-based system consisting a head node and an array of \
+other computers that you can access to run calculations in parallel and \
+dramatically increase the speed of your computations. This notebook will \
+guide you in the use of this system."
+}], "Text",
+ CellChangeTimes->{{3.538321314112217*^9, 3.538321613814233*^9}, {
+   3.538321779198209*^9, 3.538321781957818*^9}, {3.538480604115473*^9, 
+   3.538480847882762*^9}, {3.538482984738727*^9, 3.538483103099001*^9}, {
+   3.538492325987137*^9, 3.538492334795295*^9}, 3.538502105792756*^9},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell["1. A Monte Carlo Example.", "Section",
+ CellChangeTimes->{{3.538492286643845*^9, 3.5384923013061247`*^9}, {
+  3.5384932681239147`*^9, 3.538493272506516*^9}, {3.538493922042695*^9, 
+  3.538493927602687*^9}, {3.538494002771133*^9, 3.53849401007202*^9}, {
+  3.538497603387188*^9, 3.538497603793807*^9}, {3.5385973994290953`*^9, 
+  3.538597400036694*^9}, {3.5386127594000263`*^9, 3.538612759807726*^9}, {
+  3.5388365264210567`*^9, 3.538836526797493*^9}, {3.539007872026952*^9, 
+  3.539007876786995*^9}, {3.5390091531226892`*^9, 3.53900915333879*^9}, {
+  3.62791840565998*^9, 3.6279184112459803`*^9}},
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ "Consider the following Monte Carlo code to calculate the value of \[Pi]. \
+One picks two different numbers at random in the range from zero to one to \
+represent a point in a unit square with the lower, left corner at the origin. \
+The Pythagorean theorem can be used to determine the distance of these two \
+points from the origin. If that distance is less than one, then this \
+\[OpenCurlyQuote]event\[CloseCurlyQuote] is counted as a hit. If the distance \
+exceeds one, then we ignore the event and go on to a new pair of random \
+numbers. This process is repeated many, many times. The total number of pairs \
+of random numbers is the number of throws. Taking  the ratio of the number of \
+hits to the number of throws and multiplying by four gives one an estimate of \
+\[Pi].\n\n1. Copy the code below into ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " running on one of the Windows-based physics lab computers. Run it to make \
+sure it behaves correctly."
+}], "Text",
+ CellChangeTimes->{{3.538350893650497*^9, 3.538351117083177*^9}, {
+   3.538479559880889*^9, 3.5384795606349583`*^9}, {3.5384933110147467`*^9, 
+   3.5384934103228827`*^9}, {3.538493451842342*^9, 3.538493464704155*^9}, {
+   3.5384935026818657`*^9, 3.5384936749227133`*^9}, {3.5384937389708567`*^9, 
+   3.538493832625448*^9}, {3.538493894095299*^9, 3.538493916474497*^9}, {
+   3.538494084134989*^9, 3.538494112257061*^9}, {3.53849606760035*^9, 
+   3.538496143194895*^9}, {3.538496893026352*^9, 3.53849714960118*^9}, {
+   3.538497180331129*^9, 3.5384972272107162`*^9}, {3.538497645098447*^9, 
+   3.538497662845749*^9}, {3.5385017845676813`*^9, 3.538501835103074*^9}, {
+   3.538501870279067*^9, 3.538501909865139*^9}, 3.538502193736947*^9, {
+   3.540085162519864*^9, 3.54008516291593*^9}, {3.6046727900610085`*^9, 
+   3.604672796433646*^9}, {3.629820166744027*^9, 3.629820168606213*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "starting", " ", "parameters", " ", "for", " ", "Monte", " ", "Carlo", " ",
+     "calculation", " ", "of", " ", 
+    RowBox[{"\[Pi]", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"nthrows", " ", "=", " ", "10000"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"radius", "=", "1.0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nhits", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Monte", " ", "Carlo", " ", 
+     RowBox[{"loop", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"x0", "=", 
+        RowBox[{"RandomReal", "[", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "radius"}], "}"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"y0", "=", 
+        RowBox[{"RandomReal", "[", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "radius"}], "}"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"r0", "=", 
+        SqrtBox[
+         RowBox[{
+          SuperscriptBox["x0", "2"], " ", "+", " ", 
+          SuperscriptBox["y0", "2"]}]]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"r0", "<=", "radius"}], ",", " ", 
+         RowBox[{"nhits", "++"}]}], "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "nthrows"}], "}"}]}], 
+     "\[IndentingNewLine]", "]"}], ";"}], " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{"end", " ", "of", " ", "loop", " ", "over", " ", 
+     RowBox[{"throws", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"get", " ", "statistical", " ", 
+     RowBox[{"uncertainties", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dnhits", " ", "=", " ", 
+     SqrtBox["nhits"]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"myPi", "=", 
+     RowBox[{"4", "*", 
+      FractionBox["nhits", "nthrows"]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dmyPi", "=", 
+     RowBox[{"4", "*", 
+      FractionBox["dnhits", "nthrows"]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ratio", " ", "=", " ", 
+     FractionBox["myPi", "\[Pi]"]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dratio", "=", 
+     FractionBox["dmyPi", "\[Pi]"]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"results", "=", 
+     RowBox[{"{", 
+      RowBox[{"nhits", ",", "nthrows"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<myPi=\>\"", ",", 
+     RowBox[{"N", "[", "myPi", "]"}], ",", "\"\< \[PlusMinus] \>\"", ",", 
+     RowBox[{"N", "[", "dmyPi", "]"}], ",", "\"\<; Ratio =\>\"", ",", 
+     RowBox[{"N", "[", "ratio", "]"}], ",", "\"\< \[PlusMinus] \>\"", ",", 
+     RowBox[{"N", "[", "dratio", "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.5384942500814543`*^9, 3.538494417051177*^9}, {
+  3.53849454470791*^9, 3.538494717072003*^9}, {3.538494780282978*^9, 
+  3.5384948118814983`*^9}, {3.53849484347447*^9, 3.5384949126882753`*^9}, {
+  3.538494960560704*^9, 3.538495154939477*^9}, {3.538495402102377*^9, 
+  3.538495631325244*^9}, {3.5384956800134993`*^9, 3.538495727318905*^9}, {
+  3.538495990304202*^9, 3.538496019596053*^9}, {3.5390081607426367`*^9, 
+  3.539008185328787*^9}, {3.5393629474347363`*^9, 3.5393629626333847`*^9}, {
+  3.539363031819229*^9, 3.539363032234131*^9}, {3.6279184505409803`*^9, 
+  3.62791846749098*^9}, {3.62791851581498*^9, 3.62791856150598*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"myPi=\"\>", "\[InvisibleSpace]", "3.1364`", 
+   "\[InvisibleSpace]", "\<\" \[PlusMinus] \"\>", "\[InvisibleSpace]", 
+   "0.03541976849162061`", "\[InvisibleSpace]", "\<\"; Ratio =\"\>", 
+   "\[InvisibleSpace]", "0.9983471270268411`", 
+   "\[InvisibleSpace]", "\<\" \[PlusMinus] \"\>", "\[InvisibleSpace]", 
+   "0.011274462477223971`"}],
+  SequenceForm[
+  "myPi=", 3.1364, " \[PlusMinus] ", 0.03541976849162061, "; Ratio =", 
+   0.9983471270268411, " \[PlusMinus] ", 0.011274462477223971`],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.634295522012823*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "\n2.  Save your results by adding the command ",
+ StyleBox["Export[\"myMathOutput.dat\", results];",
+  FontFamily->"Monospace"],
+ " to the end of your code. Run your code again and check that your results \
+have been properly written into the output file which will most likely appear \
+in your ",
+ StyleBox["Documents",
+  FontSlant->"Italic"],
+ " area on the Windows-based, Physics lab machines."
+}], "Text",
+ CellChangeTimes->{{3.538350893650497*^9, 3.538351117083177*^9}, {
+   3.538479559880889*^9, 3.5384795606349583`*^9}, {3.5384933110147467`*^9, 
+   3.5384934103228827`*^9}, {3.538493451842342*^9, 3.538493464704155*^9}, {
+   3.5384935026818657`*^9, 3.5384936749227133`*^9}, {3.5384937389708567`*^9, 
+   3.538493832625448*^9}, {3.538493894095299*^9, 3.538493916474497*^9}, {
+   3.538494084134989*^9, 3.538494112257061*^9}, {3.53849606760035*^9, 
+   3.5384961190473413`*^9}, {3.538496151324082*^9, 3.538496223480885*^9}, {
+   3.538496268995304*^9, 3.538496335915503*^9}, {3.538496409745061*^9, 
+   3.5384966359556007`*^9}, {3.538496674068077*^9, 3.538496726824313*^9}, {
+   3.5384967730512247`*^9, 3.538496837242547*^9}, {3.5384972469631166`*^9, 
+   3.538497548634986*^9}, {3.5384976675351877`*^9, 3.5384977116350193`*^9}, {
+   3.538501944659073*^9, 3.538501969939629*^9}, {3.538502019490945*^9, 
+   3.5385020511635857`*^9}, {3.538836023614498*^9, 3.538836035582335*^9}, {
+   3.539007928600045*^9, 3.539007930991581*^9}, {3.5390079645337067`*^9, 
+   3.539007971389822*^9}, {3.539008031571157*^9, 3.539008032390779*^9}, {
+   3.539008118096945*^9, 3.5390081313636436`*^9}, {3.5390081935848713`*^9, 
+   3.539008212962635*^9}, {3.539008263499506*^9, 3.5390083116703176`*^9}, {
+   3.539363022792809*^9, 3.53936302546257*^9}, {3.541102726819942*^9, 
+   3.5411027655464373`*^9}, {3.6041643003097954`*^9, 3.6041643026187954`*^9}, 
+   3.604164358829795*^9, 3.604164403247795*^9, {3.62791843646598*^9, 
+   3.6279184472609797`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2. Preparing a Local File for Parallel Running", "Section",
+ CellChangeTimes->{{3.53848524884312*^9, 3.538485256745674*^9}, {
+  3.538612743145557*^9, 3.538612743560747*^9}, {3.538836514605693*^9, 
+  3.5388365148861513`*^9}, {3.539008342147133*^9, 3.5390083424033003`*^9}, {
+  3.539008743075389*^9, 3.53900874412271*^9}},
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ "Calculating Pi - using the above code you will prepare a file to run the \
+calculation on the cluster so many repeats can be run at once.\nIn this \
+laboratory you will develop your calculation on the Windows-based, physics \
+lab machines first. Once you are satisfied with your code follow the steps \
+below to prepare the ",
+ StyleBox["myMath.m",
+  FontSlant->"Italic"],
+ " file for batch submission to the cluster.\n\n1. To prepare your ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " notebook for batch running you first have to collect the output from the \
+calculation. We will do that here in the file myMathOutput.dat",
+ StyleBox[".",
+  FontSlant->"Italic"],
+ " Add ",
+ StyleBox["Quit[]",
+  FontFamily->"Monospace"],
+ " at the very end of the cell to halt ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ". Run your final code interactively on the local machine to check it. The \
+file",
+ StyleBox[" myMathOutput.dat",
+  FontSlant->"Italic"],
+ " should be created in your home directory.\n\n2.  Copy the code above into \
+a new ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " notebook.\n\n3. Click on the cell bracket for your code and in the ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " menu  and then in the ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " menu go to ",
+ StyleBox["Cell",
+  FontSlant->"Italic"],
+ "\[RightArrow]",
+ StyleBox["Cell Properties",
+  FontSlant->"Italic"],
+ " and select",
+ StyleBox[" Initialization Cell",
+  FontSlant->"Italic"],
+ ".\n\n4. Save your file in the ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " package format by clicking on ",
+ StyleBox["Save As",
+  FontSlant->"Italic"],
+ " in the file menu and then under ",
+ StyleBox["Files of type:",
+  FontSlant->"Italic"],
+ " select ",
+ StyleBox["Mathematica package (*.m)",
+  FontSlant->"Italic"],
+ ". Use a unique filename so you can identify this project from others.  \
+Check the file is not commented throughout ( for example every line is not \
+surrounded by (* ...*)) if it is repeat steps 3 and 4.\n\n5. Upload the file \
+to the cluster using the WinSCP file transfer GU or similar toolI. Put the \
+file in your ",
+ StyleBox["compPhys/run",
+  FontSlant->"Italic"],
+ " directory on the cluster."
+}], "Text",
+ CellChangeTimes->{{3.538350893650497*^9, 3.538351117083177*^9}, {
+   3.538479559880889*^9, 3.5384795606349583`*^9}, {3.5384933110147467`*^9, 
+   3.5384934103228827`*^9}, {3.538493451842342*^9, 3.538493464704155*^9}, {
+   3.5384935026818657`*^9, 3.5384936749227133`*^9}, {3.5384937389708567`*^9, 
+   3.538493832625448*^9}, {3.538493894095299*^9, 3.538493916474497*^9}, {
+   3.538494084134989*^9, 3.538494112257061*^9}, {3.53849606760035*^9, 
+   3.5384961190473413`*^9}, {3.538496151324082*^9, 3.538496223480885*^9}, {
+   3.538496268995304*^9, 3.538496335915503*^9}, {3.538496409745061*^9, 
+   3.5384966359556007`*^9}, {3.538496674068077*^9, 3.538496726824313*^9}, {
+   3.5384967730512247`*^9, 3.538496837242547*^9}, {3.5384972469631166`*^9, 
+   3.538497548634986*^9}, {3.5384976675351877`*^9, 3.5384977116350193`*^9}, {
+   3.538501944659073*^9, 3.538501969939629*^9}, {3.538502019490945*^9, 
+   3.5385020511635857`*^9}, {3.538836023614498*^9, 3.538836035582335*^9}, {
+   3.539007928600045*^9, 3.539007930991581*^9}, {3.5390079645337067`*^9, 
+   3.539007971389822*^9}, {3.539008031571157*^9, 3.539008032390779*^9}, {
+   3.539008118096945*^9, 3.5390081313636436`*^9}, {3.5390081935848713`*^9, 
+   3.539008212962635*^9}, {3.539008263499506*^9, 3.5390083116703176`*^9}, {
+   3.53900837125253*^9, 3.53900837667633*^9}, {3.539008407587975*^9, 
+   3.5390084240995407`*^9}, {3.539008457712467*^9, 3.539008598194203*^9}, {
+   3.5390086395953712`*^9, 3.5390086495717173`*^9}, 3.539008683210802*^9, {
+   3.539008759200976*^9, 3.539008767847897*^9}, {3.539285294321389*^9, 
+   3.539285296511259*^9}, {3.539359423566846*^9, 3.539359499366459*^9}, {
+   3.6040856871939917`*^9, 3.6040857040969915`*^9}, 3.6041643812777953`*^9, {
+   3.6041644244397955`*^9, 3.604164473789795*^9}, 3.604164553749795*^9, {
+   3.604914737534545*^9, 3.604914772902545*^9}, {3.6049148627925453`*^9, 
+   3.604914863063545*^9}, {3.604915409070545*^9, 3.604915458734545*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["3. Test Your Code.", "Section",
+ CellChangeTimes->{{3.538492286643845*^9, 3.5384923013061247`*^9}, {
+  3.5384932681239147`*^9, 3.538493272506516*^9}, {3.538493922042695*^9, 
+  3.538493927602687*^9}, {3.538596866936203*^9, 3.538596878335237*^9}, {
+  3.538596934972715*^9, 3.538596942852008*^9}, {3.538612748704506*^9, 
+  3.538612749088252*^9}, {3.538836518310285*^9, 3.5388365185577507`*^9}, {
+  3.539009159163517*^9, 3.539009159410717*^9}},
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ "Once you have a working code uploaded to the cluster, it is useful to test \
+it before submitting it to the full cluster.\n\n1.  Open a terminal window \
+and connect to the cluster (see Part 1 of HPC-1). Navigate to the ",
+ StyleBox["compPhys/run",
+  FontSlant->"Italic"],
+ " directory. \n\n2. Copy the ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " package file you made above in part 2 to ",
+ StyleBox["myMath.m",
+  FontSlant->"Italic"],
+ " (see Part 2 of HPC-1).  This step will replace the previous contests of ",
+ StyleBox["myMath.m",
+  FontSlant->"Italic"],
+ ". If you want to save that file then copy it into another file with a \
+unique name first.\n\ncp gluontest1.m myMath.m\n\n3. You can now test to see \
+if your code runs without error using the same command that will be used on \
+the remote nodes. You might want to reduce the number of trials or events in \
+your Monte Carlo to finish this test quickly. Use the file transfer GUI to \
+edit your ",
+ StyleBox["myMath.m",
+  FontSlant->"Italic"],
+ " file. Once you are ready enter the following command in the terminal \
+window from the ",
+ StyleBox["compPhys/run",
+  FontSlant->"Italic"],
+ " directory on the cluster. Note that you have to enter your own netID in \
+the path.\n\n/usr/local/bin/math -noprompt -pwfile /home/<your \
+netID>/compPhys/run/math-license -run \[OpenCurlyQuote]<<myMath.m\
+\[CloseCurlyQuote]\n\nThe anatomy of the command follows.\n\n\
+/usr/local/bin/math\t\tRun ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ".\n-noprompt\t\t\t",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " option to suppress printing the banner or ",
+ Cell[BoxData[
+  ButtonBox["In",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/In"]], "InlineFormula"],
+ "/",
+ Cell[BoxData[
+  ButtonBox["Out",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Out"]], "InlineFormula"],
+ " prompts \n\t\t\t\t(useful for batch input)\n-run \
+\[OpenCurlyQuote]<<myMath.m\[CloseCurlyQuote]\t\t",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " option to read in and execute the commands in the file.\t\n-pwfile \
+/home/<your netID>/compPhys/run/math-license\t",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " option to read the license from a file.\t\n\n4. Check to see your output \
+looks reasonable.\n\n"
+}], "Text",
+ CellChangeTimes->{{3.538350893650497*^9, 3.538351117083177*^9}, {
+   3.538479559880889*^9, 3.5384795606349583`*^9}, {3.5384933110147467`*^9, 
+   3.5384934103228827`*^9}, {3.538493451842342*^9, 3.538493464704155*^9}, {
+   3.5384935026818657`*^9, 3.5384936749227133`*^9}, {3.5384937389708567`*^9, 
+   3.538493832625448*^9}, {3.538493894095299*^9, 3.538493916474497*^9}, 
+   3.538496421922846*^9, {3.538501745915011*^9, 3.538501764426793*^9}, {
+   3.538596948972275*^9, 3.5385971231393137`*^9}, {3.538597175449588*^9, 
+   3.538597199045383*^9}, {3.538597249612216*^9, 3.538597338928246*^9}, {
+   3.538608623249939*^9, 3.538608694318698*^9}, {3.5386087333024483`*^9, 
+   3.5386088878483467`*^9}, {3.539008804005023*^9, 3.53900889965098*^9}, {
+   3.539008942586878*^9, 3.539008976748087*^9}, {3.539009012233871*^9, 
+   3.5390090164181747`*^9}, {3.539285328451522*^9, 3.539285383773387*^9}, {
+   3.539359512270431*^9, 3.539359525173888*^9}, {3.539360096014657*^9, 
+   3.539360133111239*^9}, {3.53936017223637*^9, 3.539360172412497*^9}, {
+   3.539363821815785*^9, 3.539363822398896*^9}, {3.604085901308992*^9, 
+   3.604085910887992*^9}, {3.604164614888795*^9, 3.604164623053795*^9}, {
+   3.62791900824498*^9, 3.62791901069798*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["4. Submitting Parallel Jobs to the Cluster.", "Section",
+ CellChangeTimes->{{3.538492286643845*^9, 3.5384923013061247`*^9}, {
+  3.5384932681239147`*^9, 3.538493272506516*^9}, {3.538493922042695*^9, 
+  3.538493927602687*^9}, {3.5385968630175667`*^9, 3.538596863449416*^9}, {
+  3.53861275412782*^9, 3.5386127557519703`*^9}, {3.5388365222057467`*^9, 
+  3.538836522750042*^9}, {3.539009163234323*^9, 3.539009163651195*^9}},
+ FontFamily->"Times"],
+
+Cell[TextData[{
+ "To start the job running on the cluster open up a terminal window (see Part \
+1 of HPC-1) and navigate to the ",
+ StyleBox["compPhys/run",
+  FontSlant->"Italic"],
+ " directory. Follow the procedure below.\nWhen using the GUI interface you \
+may need to refresh often to see any updates to the folders.  The refresh \
+button can be found in the upper right of the GUI window.\n\n1. The simplest \
+way to submit your job to the cluster is to copy your ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " package file that you uploaded to your ",
+ StyleBox["compPhys/run",
+  FontSlant->"Italic"],
+ " directory to ",
+ StyleBox["myMath.m ",
+  FontSlant->"Italic"],
+ "(see Part 2 above and Part 2 of HPC-1). This is the file that the ",
+ StyleBox["runMath.sh",
+  FontSlant->"Italic"],
+ " script will use to run the batch job on one of the remote nodes. If you \
+want to keep your original ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " package name you will have to modify the file ",
+ StyleBox["runMath.sh.template",
+  FontSlant->"Italic"],
+ ".\n\n2. Run the ",
+ StyleBox["submit.pl",
+  FontSlant->"Italic"],
+ " script in your ",
+ StyleBox["compPhys/run",
+  FontSlant->"Italic"],
+ " directory on the cluster from the command line using ",
+ StyleBox["submit.pl <your NetID>",
+  FontFamily->"Monospace"],
+ ". You\[CloseCurlyQuote]re off!\n\n3. Monitor your batch jobs until they are \
+all done (see Part 4 of HPC-1 for ways to do this). When you are finished, \
+navigate to your ",
+ StyleBox["compPhys/run/logs",
+  FontSlant->"Italic"],
+ " directory. You should see  files with names like log14, log17, ",
+ StyleBox["etc",
+  FontSlant->"Italic"],
+ ". These files contain system information about each job submitted by the \
+submit.pl script. Check a couple of files to see that things are alright (see \
+the ",
+ StyleBox["more",
+  FontFamily->"Monospace"],
+ " command in Part 2 of HPC-1).\n\n4. Navigate to your ",
+ StyleBox["compPhys/run/results",
+  FontSlant->"Italic"],
+ " directory on the cluster. This is where the output from each batch job is \
+stored and you should see files with names like ",
+ StyleBox["myMath08.dat",
+  FontSlant->"Italic"],
+ ", ",
+ StyleBox["myMath41.dat",
+  FontSlant->"Italic"],
+ ", ",
+ StyleBox["etc",
+  FontSlant->"Italic"],
+ ". These files contain the results of the calculation. Check a couple of the \
+files to see that things are alright (see the ",
+ StyleBox["more",
+  FontFamily->"Monospace"],
+ " command in Part 2 of HPC-1). These files have the results for the \
+calculations on the individual nodes and we want to add these together to get \
+a final result. The Unix ",
+ StyleBox["cat",
+  FontFamily->"Monospace"],
+ " command (short for concatenate not a reference to the mammal) can be used \
+for this (see also Part 2 of HPC-1).\n\n",
+ StyleBox["cat myMathOutput*.dat > total.dat",
+  FontFamily->"Monospace"],
+ StyleBox["\n\n",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ "This command creates a new file total.dat that will have all the results in \
+a single file. \n\n5. Download the file total.dat to your local machine and \
+analyze this file to produce a final estimate of \[Pi].  (You may want to \
+check out the ReadList and Sum functions)\n\n",
+ StyleBox["(Place answer to data and answer to 4.5 in chelms netfiles)",
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0.5, 0]]
+}], "Text",
+ CellChangeTimes->{{3.538350893650497*^9, 3.538351117083177*^9}, {
+   3.538479559880889*^9, 3.5384795606349583`*^9}, {3.5384933110147467`*^9, 
+   3.5384934103228827`*^9}, {3.538493451842342*^9, 3.538493464704155*^9}, {
+   3.5384935026818657`*^9, 3.5384936749227133`*^9}, {3.5384937389708567`*^9, 
+   3.538493832625448*^9}, {3.538493894095299*^9, 3.538493916474497*^9}, 
+   3.538496421922846*^9, {3.538501745915011*^9, 3.538501764426793*^9}, {
+   3.5386085687770643`*^9, 3.538608587683756*^9}, {3.539009043059936*^9, 
+   3.5390091416919947`*^9}, {3.53900920128338*^9, 3.539009244292738*^9}, {
+   3.539009444621677*^9, 3.539009510546783*^9}, {3.5390095517006807`*^9, 
+   3.539009594716283*^9}, {3.5390096273964653`*^9, 3.5390096517394257`*^9}, {
+   3.539285482876861*^9, 3.539285498778182*^9}, {3.539285888734274*^9, 
+   3.539285912882036*^9}, {3.5393595712467117`*^9, 3.539359633009327*^9}, {
+   3.539359745971594*^9, 3.539359784542951*^9}, 3.539360070183976*^9, {
+   3.604086705415992*^9, 3.6040867063799915`*^9}, {3.604086755836992*^9, 
+   3.604086756161992*^9}, {3.604164710256795*^9, 3.604164710660795*^9}, {
+   3.6049157792935452`*^9, 3.6049158269375453`*^9}, {3.604916840551575*^9, 
+   3.604916912560145*^9}, {3.604916987259548*^9, 3.6049169967403917`*^9}, {
+   3.60491705798776*^9, 3.604917071650858*^9}, {3.6049172955300217`*^9, 
+   3.6049172999344625`*^9}, {3.629820222396592*^9, 3.6298202432156734`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+PrintingCopies->1,
+PrintingStartingPageNumber->1,
+PrintingPageRange->{1, Automatic},
+PageHeaders->{{
+   Cell[
+    TextData[{
+      StyleBox[
+       CounterBox["Page"], "PageNumber"], " ", "|", " ", 
+      StyleBox[
+       ValueBox["FileName"], "Header"]}], "Header", 
+    CellMargins -> {{0, Inherited}, {Inherited, Inherited}}], None, None}, {
+  None, None, 
+   Cell[
+    TextData[{
+      StyleBox[
+       ValueBox["FileName"], "Header"], " ", "|", " ", 
+      StyleBox[
+       CounterBox["Page"], "PageNumber"]}], "Header", 
+    CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}},
+PageFooters->{{None, None, None}, {None, None, None}},
+PageHeaderLines->{False, False},
+PageFooterLines->{False, False},
+PrintingOptions->{"FacingPages"->True,
+"FirstPageFace"->Right,
+"FirstPageFooter"->True,
+"FirstPageHeader"->True},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (December 4, 2014)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]], 
+   Cell[
+    StyleData["Text"], FontFamily -> "Times New Roman", FontSize -> 14, 
+    FontWeight -> "Plain", FontSlant -> "Plain", 
+    FontVariations -> {"StrikeThrough" -> False, "Underline" -> False}]}, 
+  Visible -> False, FrontEndVersion -> 
+  "10.0 for Microsoft Windows (64-bit) (December 4, 2014)", StyleDefinitions -> 
+  "PrivateStylesheetFormatting.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[422, 15, 334, 6, 91, "Title"],
+Cell[759, 23, 1171, 21, 87, "Text"],
+Cell[CellGroupData[{
+Cell[1955, 48, 624, 9, 64, "Section"],
+Cell[2582, 59, 1883, 28, 125, "Text"],
+Cell[CellGroupData[{
+Cell[4490, 91, 3582, 85, 484, "Input"],
+Cell[8075, 178, 610, 12, 23, "Print"]
+}, Open  ]],
+Cell[8700, 193, 1944, 31, 68, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10681, 229, 348, 5, 64, "Section"],
+Cell[11032, 236, 4202, 90, 296, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15271, 331, 468, 7, 64, "Section"],
+Cell[15742, 340, 3535, 74, 506, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19314, 419, 447, 6, 64, "Section"],
+Cell[19764, 427, 4782, 104, 430, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

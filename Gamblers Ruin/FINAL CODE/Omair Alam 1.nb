@@ -1,0 +1,571 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     24928,        562]
+NotebookOptionsPosition[     24190,        533]
+NotebookOutlinePosition[     24536,        548]
+CellTagsIndexPosition[     24493,        545]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"CRAPS", " ", "GAME", " ", "SIMULATION"}], " ", "*)"}], " ", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"FAIR", " ", "DIE"}], " ", "*)"}], " ", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", "VARIABLES", " ", "*)"}], " ", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"firstDie", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"secondDie", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"rollSum", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"myPoint", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"numberOfWins", " ", "=", " ", "0"}], ";"}], " ", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", "CONSTANTS", "*)"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"numberOfReplications", " ", "=", " ", "10000"}], ";"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"numberOfGames", " ", "=", " ", "100"}], ";"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"inneriterator", " ", "=", " ", "0"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"winChoice", " ", "=", " ", "true"}], ";"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"outerIterator", " ", "=", " ", "0"}], ";"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"fairWinningProbability", " ", "=", " ", 
+     RowBox[{"List", "[", "]"}]}], ";"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ProbabilityOfWinning", " ", "=", " ", "0"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"While", " ", "[", 
+     RowBox[{
+      RowBox[{"outerIterator", " ", "<", " ", "numberOfGames"}], ","}], 
+     "\[IndentingNewLine]"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"While", " ", "[", 
+     RowBox[{
+      RowBox[{"inneriterator", " ", "<", " ", "numberOfReplications"}], ",", 
+      " ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"WHILE", " ", "WE", " ", "CAN", " ", "STILL", " ", "PLAY"}], 
+       " ", "*)"}], " ", "\[IndentingNewLine]", "\t", 
+      RowBox[{
+       RowBox[{"firstDie", " ", "=", " ", 
+        RowBox[{
+         RowBox[{"RandomInteger", "[", "5", "]"}], "+", "1"}]}], ";", 
+       "\[IndentingNewLine]", "\t", 
+       RowBox[{"secondDie", " ", "=", " ", 
+        RowBox[{
+         RowBox[{"RandomInteger", "[", "5", "]"}], "+", "1"}]}], ";", 
+       "\[IndentingNewLine]", "\t", 
+       RowBox[{"rollSum", " ", "=", " ", 
+        RowBox[{"firstDie", " ", "+", " ", "secondDie"}]}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", "\t", 
+       RowBox[{"If", " ", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"rollSum", " ", "\[Equal]", " ", "7"}], " ", "\[Or]", " ", 
+          RowBox[{"rollSum", " ", "\[Equal]", " ", "11"}]}], ",", 
+         RowBox[{"(*", " ", 
+          RowBox[{"IF", " ", "SUM", " ", "is", " ", "THIS"}], " ", "*)"}], 
+         " ", "\[IndentingNewLine]", "\t\t", 
+         RowBox[{
+          RowBox[{"winChoice", " ", "=", " ", "true"}], ";", " ", 
+          "\[IndentingNewLine]", "\t\t", 
+          RowBox[{"numberOfWins", "++"}]}]}], "\[IndentingNewLine]", "\t", 
+        "]"}], ";", "\[IndentingNewLine]", "\t", 
+       RowBox[{"If", " ", "[", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"rollSum", " ", "\[Equal]", "2"}], " ", "\[Or]", " ", 
+          RowBox[{"rollSum", " ", "\[Equal]", " ", "3"}], " ", "\[Or]", " ", 
+          RowBox[{"rollSum", " ", "\[Equal]", " ", "12"}]}], ",", 
+         RowBox[{"(*", " ", 
+          RowBox[{"IF", " ", "ELSE", " ", "THIS"}], " ", "*)"}], " ", 
+         "\[IndentingNewLine]", "\t\t", 
+         RowBox[{
+          RowBox[{"winChoice", " ", "=", " ", "false"}], ";"}]}], 
+        "\[IndentingNewLine]", "          ", "]"}], ";", 
+       "\[IndentingNewLine]", "\t", 
+       RowBox[{"If", " ", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"rollSum", " ", "\[NotEqual]", " ", "7"}], " ", "\[And]", 
+          RowBox[{"rollSum", " ", "\[NotEqual]", " ", "11"}], " ", "\[And]", 
+          RowBox[{"rollSum", " ", "\[NotEqual]", " ", "2"}], " ", "\[And]", 
+          RowBox[{"rollSum", " ", "\[NotEqual]", " ", "3"}], " ", "\[And]", 
+          RowBox[{"rollSum", " ", "\[NotEqual]", " ", "12"}]}], ",", "\t", 
+         RowBox[{"(*", " ", "ELSE", " ", "*)"}], " \t", "\[IndentingNewLine]",
+          "\t\t\t", 
+         RowBox[{
+          RowBox[{"myPoint", " ", "=", " ", "rollSum"}], ";", " ", 
+          "\[IndentingNewLine]", "\t\t\t", 
+          RowBox[{"firstDie", " ", "=", " ", 
+           RowBox[{
+            RowBox[{"RandomInteger", "[", "5", "]"}], "+", "1"}]}], ";", 
+          "\[IndentingNewLine]", "\t\t\t", 
+          RowBox[{"secondDie", " ", "=", " ", 
+           RowBox[{
+            RowBox[{"RandomInteger", "[", "5", "]"}], "+", "1"}]}], ";", 
+          "\[IndentingNewLine]", "\t\t\t", 
+          RowBox[{"rollSum", " ", "=", " ", 
+           RowBox[{"firstDie", " ", "+", " ", "secondDie"}]}], ";", " ", 
+          "\[IndentingNewLine]", "\t\t\t", 
+          RowBox[{"While", " ", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"rollSum", " ", "\[NotEqual]", " ", "myPoint"}], " ", 
+             "\[And]", " ", 
+             RowBox[{"rollSum", " ", "\[NotEqual]", " ", "7"}]}], ",", " ", 
+            RowBox[{"(*", " ", 
+             RowBox[{
+              RowBox[{
+              "KEEP", " ", "ROLLING", " ", "TILL", " ", "SAME", " ", "NUMBER",
+                " ", "RECEIVED", " ", "OR", " ", "NUMBER"}], " ", "=", " ", 
+              "7"}], " ", "*)"}], " ", "\[IndentingNewLine]", "\t\t\t\t\t", 
+            RowBox[{
+             RowBox[{"firstDie", " ", "=", " ", 
+              RowBox[{
+               RowBox[{"RandomInteger", "[", "5", "]"}], "+", "1"}]}], ";", 
+             "\[IndentingNewLine]", "\t\t\t\t\t", 
+             RowBox[{"secondDie", " ", "=", " ", 
+              RowBox[{
+               RowBox[{"RandomInteger", "[", "5", "]"}], "+", "1"}]}], ";", 
+             "\[IndentingNewLine]", "\t\t\t\t\t", 
+             RowBox[{"rollSum", " ", "=", " ", 
+              RowBox[{"firstDie", " ", "+", " ", "secondDie"}]}], ";"}]}], 
+           " ", "\[IndentingNewLine]", "\t\t\t\t", "]"}], ";", 
+          "\[IndentingNewLine]", "\t\t\t", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"myPoint", " ", "\[Equal]", " ", "rollSum"}], ",", 
+            "\[IndentingNewLine]", "\t\t\t\t", 
+            RowBox[{
+             RowBox[{"winChoice", " ", "=", " ", "true"}], ";", " ", 
+             "\[IndentingNewLine]", "\t\t\t\t", 
+             RowBox[{"numberOfWins", "++"}]}], ",", "\[IndentingNewLine]", 
+            "\t\t\t\t", 
+            RowBox[{
+             RowBox[{"winChoice", " ", "=", " ", "false"}], ";"}]}], " ", 
+           "\[IndentingNewLine]", "\t\t\t", "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "\t\t\t\t", "\[IndentingNewLine]", "\t", "]"}],
+        ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"inneriterator", "++"}], ";"}]}], "\[IndentingNewLine]", "]"}],
+     ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ProbabilityOfWinning", " ", "=", " ", 
+     RowBox[{"ProbabilityOfWinning", " ", "+", " ", 
+      RowBox[{"numberOfWins", "/", "numberOfReplications"}]}]}], ";", " ", 
+    RowBox[{"(*", 
+     RowBox[{
+     "KEEP", " ", "A", " ", "RUNNING", " ", "COUNT", " ", "OF", " ", "THE", 
+      " ", "PROBABILITY"}], " ", "*)"}], " ", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"(*", 
+     RowBox[{
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"fairWinningProbability", ",", " ", 
+        RowBox[{"ProbabilityOfWinning", " ", "//", "N"}]}], "]"}], ";"}], 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"inneriterator", " ", "=", " ", "0"}], ";"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"numberOfWins", " ", "=", " ", "0"}], ";"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"outerIterator", "++"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"]", ";"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"ProbabilityOfWinning", "//", "N"}], "]"}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"THE", " ", "//", 
+      RowBox[{
+      "N", " ", "converts", " ", "the", " ", "answer", " ", "to", " ", 
+       "decimal"}]}], " ", "*)"}], " ", "\[IndentingNewLine]", 
+    "fairWinningProbability", ";"}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.6380929674528446`*^9, 3.6380933768135433`*^9}, {
+   3.638093461726617*^9, 3.638093485945777*^9}, {3.638093524621117*^9, 
+   3.6380935693538036`*^9}, {3.638093642842465*^9, 3.6380936623833055`*^9}, {
+   3.638093780125489*^9, 3.6380938313307133`*^9}, {3.638093863561523*^9, 
+   3.6380938754699726`*^9}, 3.6380939073155003`*^9, {3.63809401310238*^9, 
+   3.638094045584367*^9}, {3.6380941569109106`*^9, 3.6380942732038345`*^9}, {
+   3.638094321391951*^9, 3.6380943228669806`*^9}, {3.6380943742673855`*^9, 
+   3.6380943924872503`*^9}, {3.6380944400939703`*^9, 3.638094548455656*^9}, {
+   3.6380946061775055`*^9, 3.6380946349528637`*^9}, {3.6380946881365085`*^9, 
+   3.638094726081354*^9}, {3.6380948601915526`*^9, 3.6380949853351154`*^9}, {
+   3.6380950468556666`*^9, 3.638095087170182*^9}, {3.6380951624934874`*^9, 
+   3.638095214833558*^9}, {3.63809538062851*^9, 3.6380954274456406`*^9}, {
+   3.638095848626534*^9, 3.6380958834842143`*^9}, {3.6380959337230806`*^9, 
+   3.6380959538162766`*^9}, {3.638374604881872*^9, 3.6383746084123187`*^9}, {
+   3.6383746460832615`*^9, 3.638374703891881*^9}, 3.638374843558525*^9, {
+   3.6383749014504857`*^9, 3.6383749091989574`*^9}, {3.6383749629359365`*^9, 
+   3.638375035022589*^9}, {3.6383751533273635`*^9, 3.6383753002571096`*^9}, {
+   3.6383755440387726`*^9, 3.638375563307417*^9}, {3.6383756696226854`*^9, 
+   3.638375786374389*^9}, 3.6383758667542934`*^9, {3.638375902504614*^9, 
+   3.638375935146727*^9}, {3.6383759661046453`*^9, 3.638375996359084*^9}, {
+   3.6383760418542757`*^9, 3.6383761910739546`*^9}, {3.638376982753541*^9, 
+   3.6383769839173756`*^9}, {3.63837792764966*^9, 3.6383780142329807`*^9}, 
+   3.638378074452611*^9, {3.6383781914594774`*^9, 3.638378192699347*^9}, 
+   3.6383783057544117`*^9, 3.638378364531003*^9, {3.6383803984702916`*^9, 
+   3.638380442773677*^9}, 3.6385807933085318`*^9, {3.6385808809425974`*^9, 
+   3.638580881152749*^9}, {3.6385809801778736`*^9, 3.6385809805121164`*^9}, {
+   3.638895840957239*^9, 3.638895981465618*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["0.4934`"], "Print",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{{3.638377969033944*^9, 3.63837798327404*^9}, 
+   3.638378015724024*^9, {3.6383780626532507`*^9, 3.638378086967455*^9}, 
+   3.6383781683581076`*^9, 3.6383782265182867`*^9, 3.638378311840692*^9, 
+   3.63837836665353*^9, {3.6383803874644966`*^9, 3.6383804446309643`*^9}, {
+   3.6385806861796875`*^9, 3.6385807080781803`*^9}, 3.6385808124711027`*^9, 
+   3.638580883890675*^9, {3.6385809471925187`*^9, 3.638580981731959*^9}, 
+   3.6388958829289255`*^9, {3.6388959747788863`*^9, 3.638895982390272*^9}}],
+
+Cell[BoxData["0.8`"], "Print",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{{3.638377969033944*^9, 3.63837798327404*^9}, 
+   3.638378015724024*^9, {3.6383780626532507`*^9, 3.638378086967455*^9}, 
+   3.6383781683581076`*^9, 3.6383782265182867`*^9, 3.638378311840692*^9, 
+   3.63837836665353*^9, {3.6383803874644966`*^9, 3.6383804446309643`*^9}, {
+   3.6385806861796875`*^9, 3.6385807080781803`*^9}, 3.6385808124711027`*^9, 
+   3.638580883890675*^9, {3.6385809471925187`*^9, 3.638580981731959*^9}, 
+   3.6388958829289255`*^9, 3.6388959747788863`*^9}],
+
+Cell[BoxData[""], "Print",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{{3.638377969033944*^9, 3.63837798327404*^9}, 
+   3.638378015724024*^9, {3.6383780626532507`*^9, 3.638378086967455*^9}, 
+   3.6383781683581076`*^9, 3.6383782265182867`*^9, 3.638378311840692*^9, 
+   3.63837836665353*^9, {3.6383803874644966`*^9, 3.6383804446309643`*^9}, {
+   3.6385806861796875`*^9, 3.6385807080781803`*^9}, 3.6385808124711027`*^9, 
+   3.638580883890675*^9, {3.6385809471925187`*^9, 3.638580981731959*^9}, 
+   3.6388958829289255`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.638094989968423*^9, 3.638094991132247*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"UNFAIR", " ", "DIE"}], " ", "*)"}], " "}]], "Input",
+ CellChangeTimes->{{3.6388958960021706`*^9, 3.6388958991513977`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.638094948646181*^9, 3.6380949494867754`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"firstDie", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"secondDie", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rollSum", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"myPoint", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"numberOfWins", " ", "=", " ", "0"}], ";"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"numberOfReplications", " ", "=", " ", "10000"}], ";"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"numberOfGames", " ", "=", " ", "100"}], ";"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"inneriterator", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"winChoice", " ", "=", " ", "true"}], ";"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"outerIterator", " ", "=", " ", "0"}], ";"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fairWinningProbability", " ", "=", " ", 
+    RowBox[{"List", "[", "]"}]}], ";"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ProbabilityOfWinning", " ", "=", " ", "0"}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"CREATING", " ", "AN", " ", "UNFAIR", " ", "DIE"}], " ", "*)"}], 
+  " ", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"unfairDyeList", " ", "=", " ", 
+    RowBox[{"List", "[", 
+     RowBox[{
+     "1", ",", "2", ",", "2", ",", "3", ",", "3", ",", "4", ",", "4", ",", 
+      "5", ",", "5", ",", "6", ",", "6", ",", "6", ",", "6"}], "]"}]}], ";"}],
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"While", " ", "[", 
+    RowBox[{
+     RowBox[{"outerIterator", " ", "<", " ", "numberOfGames"}], ","}], 
+    "\[IndentingNewLine]"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"While", " ", "[", 
+   RowBox[{
+    RowBox[{"inneriterator", " ", "<", " ", "numberOfReplications"}], ",", 
+    "\[IndentingNewLine]", "\t", 
+    RowBox[{
+     RowBox[{"firstDie", " ", "=", " ", 
+      RowBox[{"unfairDyeList", "[", 
+       RowBox[{"[", 
+        RowBox[{
+         RowBox[{"RandomInteger", "[", "12", "]"}], "+", "1"}], "]"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", "\t", 
+     RowBox[{"secondDie", " ", "=", " ", 
+      RowBox[{"unfairDyeList", "[", 
+       RowBox[{"[", 
+        RowBox[{
+         RowBox[{"RandomInteger", "[", "12", "]"}], "+", "1"}], "]"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", "\t", 
+     RowBox[{"rollSum", " ", "=", " ", 
+      RowBox[{"firstDie", " ", "+", " ", "secondDie"}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", "\t", 
+     RowBox[{"If", " ", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"rollSum", " ", "\[Equal]", " ", "7"}], " ", "\[Or]", " ", 
+        RowBox[{"rollSum", " ", "\[Equal]", " ", "11"}]}], ",", 
+       "\[IndentingNewLine]", "\t\t", 
+       RowBox[{
+        RowBox[{"winChoice", " ", "=", " ", "true"}], ";", " ", 
+        "\[IndentingNewLine]", "\t\t", 
+        RowBox[{"numberOfWins", "++"}]}]}], "\[IndentingNewLine]", "\t", 
+      "]"}], ";", "\[IndentingNewLine]", "\t", 
+     RowBox[{"If", " ", "[", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"rollSum", " ", "\[Equal]", "2"}], " ", "\[Or]", " ", 
+        RowBox[{"rollSum", " ", "\[Equal]", " ", "3"}], " ", "\[Or]", " ", 
+        RowBox[{"rollSum", " ", "\[Equal]", " ", "12"}]}], ",", 
+       "\[IndentingNewLine]", "\t\t", 
+       RowBox[{
+        RowBox[{"winChoice", " ", "=", " ", "false"}], ";"}]}], 
+      "\[IndentingNewLine]", "          ", "]"}], ";", "\[IndentingNewLine]", 
+     "\t", 
+     RowBox[{"If", " ", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"rollSum", " ", "\[NotEqual]", " ", "7"}], " ", "\[And]", 
+        RowBox[{"rollSum", " ", "\[NotEqual]", " ", "11"}], " ", "\[And]", 
+        RowBox[{"rollSum", " ", "\[NotEqual]", " ", "2"}], " ", "\[And]", 
+        RowBox[{"rollSum", " ", "\[NotEqual]", " ", "3"}], " ", "\[And]", 
+        RowBox[{"rollSum", " ", "\[NotEqual]", " ", "12"}]}], ",", "\t\t", 
+       "\[IndentingNewLine]", "\t\t\t", 
+       RowBox[{
+        RowBox[{"myPoint", " ", "=", " ", "rollSum"}], ";", " ", 
+        "\[IndentingNewLine]", "\t\t\t", 
+        RowBox[{"firstDie", " ", "=", " ", 
+         RowBox[{"unfairDyeList", "[", 
+          RowBox[{"[", 
+           RowBox[{
+            RowBox[{"RandomInteger", "[", "12", "]"}], "+", "1"}], "]"}], 
+          "]"}]}], ";", "\[IndentingNewLine]", "\t\t\t", 
+        RowBox[{"secondDie", " ", "=", " ", 
+         RowBox[{"unfairDyeList", "[", 
+          RowBox[{"[", 
+           RowBox[{
+            RowBox[{"RandomInteger", "[", "12", "]"}], "+", "1"}], "]"}], 
+          "]"}]}], ";", "\[IndentingNewLine]", "\t\t\t", 
+        RowBox[{"rollSum", " ", "=", " ", 
+         RowBox[{"firstDie", " ", "+", " ", "secondDie"}]}], ";", " ", 
+        "\[IndentingNewLine]", "\t\t\t", 
+        RowBox[{"While", " ", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"rollSum", " ", "\[NotEqual]", " ", "myPoint"}], " ", 
+           "\[And]", " ", 
+           RowBox[{"rollSum", " ", "\[NotEqual]", " ", "7"}]}], ",", 
+          "\[IndentingNewLine]", "\t\t\t\t\t", 
+          RowBox[{
+           RowBox[{"firstDie", " ", "=", " ", 
+            RowBox[{"unfairDyeList", "[", 
+             RowBox[{"[", 
+              RowBox[{
+               RowBox[{"RandomInteger", "[", "12", "]"}], "+", "1"}], "]"}], 
+             "]"}]}], ";", "\[IndentingNewLine]", "\t\t\t\t\t", 
+           RowBox[{"secondDie", " ", "=", " ", 
+            RowBox[{"unfairDyeList", "[", 
+             RowBox[{"[", 
+              RowBox[{
+               RowBox[{"RandomInteger", "[", "12", "]"}], "+", "1"}], "]"}], 
+             "]"}]}], ";", "\[IndentingNewLine]", "\t\t\t\t\t", 
+           RowBox[{"rollSum", " ", "=", " ", 
+            RowBox[{"firstDie", " ", "+", " ", "secondDie"}]}], ";"}]}], " ", 
+         "\[IndentingNewLine]", "\t\t\t\t", "]"}], ";", "\[IndentingNewLine]",
+         "\t\t\t", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"myPoint", " ", "\[Equal]", " ", "rollSum"}], ",", 
+          "\[IndentingNewLine]", "\t\t\t\t", 
+          RowBox[{
+           RowBox[{"winChoice", " ", "=", " ", "true"}], ";", " ", 
+           "\[IndentingNewLine]", "\t\t\t\t", 
+           RowBox[{"numberOfWins", "++"}]}], ",", "\[IndentingNewLine]", 
+          "\t\t\t\t", 
+          RowBox[{
+           RowBox[{"winChoice", " ", "=", " ", "false"}], ";"}]}], " ", 
+         "\[IndentingNewLine]", "\t\t\t", "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "\t\t\t\t", "\[IndentingNewLine]", "\t", "]"}], 
+     ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"inneriterator", "++"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ProbabilityOfWinning", " ", "=", " ", 
+    RowBox[{"ProbabilityOfWinning", " ", "+", " ", 
+     RowBox[{"numberOfWins", "/", "numberOfReplications"}]}]}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"AppendTo", "[", 
+     RowBox[{"fairWinningProbability", ",", " ", 
+      RowBox[{"ProbabilityOfWinning", " ", "//", "N"}]}], "]"}], ";"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"inneriterator", " ", "=", " ", "0"}], ";"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"numberOfWins", " ", "=", " ", "0"}], ";"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"outerIterator", "++"}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"]", ";"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"ProbabilityOfWinning", " ", "//", "N"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"fairWinningProbability", ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.6380929674528446`*^9, 3.6380933768135433`*^9}, {
+   3.638093461726617*^9, 3.638093485945777*^9}, {3.638093524621117*^9, 
+   3.6380935693538036`*^9}, {3.638093642842465*^9, 3.6380936623833055`*^9}, {
+   3.638093780125489*^9, 3.6380938313307133`*^9}, {3.638093863561523*^9, 
+   3.6380938754699726`*^9}, 3.6380939073155003`*^9, {3.63809401310238*^9, 
+   3.638094045584367*^9}, {3.6380941569109106`*^9, 3.6380942732038345`*^9}, {
+   3.638094321391951*^9, 3.6380943228669806`*^9}, {3.6380943742673855`*^9, 
+   3.6380943924872503`*^9}, {3.6380944400939703`*^9, 3.638094548455656*^9}, {
+   3.6380946061775055`*^9, 3.6380946349528637`*^9}, {3.6380946881365085`*^9, 
+   3.638094726081354*^9}, {3.6380948601915526`*^9, 3.6380949853351154`*^9}, {
+   3.6380950468556666`*^9, 3.638095087170182*^9}, {3.6380951624934874`*^9, 
+   3.638095214833558*^9}, {3.63809538062851*^9, 3.6380954274456406`*^9}, {
+   3.638095848626534*^9, 3.6380958834842143`*^9}, {3.6380959337230806`*^9, 
+   3.6380959538162766`*^9}, {3.638374604881872*^9, 3.6383746084123187`*^9}, {
+   3.6383746460832615`*^9, 3.638374703891881*^9}, 3.638374843558525*^9, {
+   3.6383749014504857`*^9, 3.6383749091989574`*^9}, {3.6383749629359365`*^9, 
+   3.638375035022589*^9}, {3.6383751533273635`*^9, 3.6383753002571096`*^9}, {
+   3.6383755440387726`*^9, 3.638375563307417*^9}, {3.6383756696226854`*^9, 
+   3.638375786374389*^9}, 3.6383758667542934`*^9, {3.638375902504614*^9, 
+   3.638375935146727*^9}, {3.6383759661046453`*^9, 3.638375996359084*^9}, {
+   3.6383760418542757`*^9, 3.6383761910739546`*^9}, {3.638376982753541*^9, 
+   3.6383769839173756`*^9}, {3.6383775920790253`*^9, 3.638377611422713*^9}, {
+   3.6383776829503775`*^9, 3.638377804021113*^9}, {3.6383778697596617`*^9, 
+   3.638377873638392*^9}, {3.6383780221625786`*^9, 3.6383780475355425`*^9}, 
+   3.6383780813755045`*^9, {3.6383781961257687`*^9, 3.6383781973296347`*^9}, {
+   3.6383782639157743`*^9, 3.638378276006338*^9}, 3.6383783090637283`*^9, 
+   3.6383783601018667`*^9, {3.638380467488163*^9, 3.638380484842452*^9}, {
+   3.6385809943368998`*^9, 3.6385810150255504`*^9}, {3.6388959019814014`*^9, 
+   3.638895906969928*^9}, {3.6388959876179676`*^9, 3.638895988164355*^9}}],
+
+Cell[BoxData["0.5148`"], "Print",
+ CellChangeTimes->{{3.6383780501884108`*^9, 3.6383780668112116`*^9}, 
+   3.6383781073999233`*^9, {3.6383781849318404`*^9, 3.6383782119249396`*^9}, {
+   3.638378293160466*^9, 3.638378315833537*^9}, 3.638378369642623*^9, 
+   3.6383803931035004`*^9, {3.6383804789112473`*^9, 3.638380487589382*^9}, 
+   3.6383806775809193`*^9, 3.638580747776291*^9, {3.6385809953966503`*^9, 
+   3.638581015261717*^9}, 3.6388959888408318`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.638094989968423*^9, 3.638094991132247*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.638094948646181*^9, 3.6380949494867754`*^9}}]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (December 4, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 10625, 218, 1312, "Input"],
+Cell[CellGroupData[{
+Cell[11230, 244, 599, 9, 23, "Print"],
+Cell[11832, 255, 572, 9, 23, "Print"],
+Cell[12407, 266, 544, 9, 23, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[12978, 279, 92, 1, 31, "Input"],
+Cell[13073, 282, 175, 4, 31, "Input"],
+Cell[13251, 288, 94, 1, 31, "Input"],
+Cell[CellGroupData[{
+Cell[13370, 293, 10154, 223, 1245, "Input"],
+Cell[23527, 518, 455, 6, 23, "Print"]
+}, Open  ]],
+Cell[23997, 527, 92, 1, 31, "Input"],
+Cell[24092, 530, 94, 1, 31, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

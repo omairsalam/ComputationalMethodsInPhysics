@@ -1,7 +1,7 @@
 # Computational Methods In Physics
 
 
-This folder contains all the projects that I did for a Course called Computational Methods in Physics. All of these projects are written in mathematica and a few of them (Calculating Pi, Intoduction To Richmond Clustur - GLUON, Shooting the Sun and Random Walk also make use of the University of Richmond cluster called Gluon.
+This folder contains all the projects that I did for a Course called Computational Methods in Physics. All of these projects are written in mathematica and a few of them (Calculating Pi, Intoduction To Richmond Clustur - GLUON, Shooting the Sun and Random Walk) also make use of the University of Richmond cluster called Gluon.
 
 In order to use this cluster, there is a mathematica script on the cluster which "translates" the code that we write into that code that is required in order to be run on the cluster. That small script is not part of any of these files. 
 
